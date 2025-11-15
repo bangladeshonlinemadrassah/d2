@@ -236,61 +236,6 @@
       opacity: 1;
     }
 
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px;
-      margin: 48px 0;
-    }
-
-    .stat-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding: 32px 24px;
-      text-align: center;
-      backdrop-filter: blur(12px);
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      box-shadow: var(--shadow-md);
-    }
-
-    .stat-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 6px;
-      background: var(--gradient-primary);
-      opacity: 0.9;
-    }
-
-    .stat-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .stat-number {
-      font-size: 3rem;
-      font-weight: 800;
-      background: var(--gradient-primary);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 12px;
-      line-height: 1;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-    }
-
-    .stat-label {
-      color: var(--text-muted);
-      font-size: 1.1rem;
-      font-weight: 500;
-    }
-
     .today-classes-table {
       width: 100%;
       border-collapse: separate;
@@ -2078,24 +2023,6 @@
         <div id="clock-time" class="clock-time"></div>
         <div id="clock-date" class="clock-date"></div>
         <div id="exam-countdown" class="stat-label bangla-font"></div>
-      </div>
-      <div class="stats">
-        <div class="stat-card fade-in">
-          <div class="stat-number">21</div>
-          <div class="stat-label bangla-font">সাবজেক্ট</div>
-        </div>
-        <div class="stat-card fade-in">
-          <div class="stat-number">120+</div>
-          <div class="stat-label bangla-font">ক্লাস</div>
-        </div>
-        <div class="stat-card fade-in" id="exam-stats">
-          <div class="stat-number">20+</div>
-          <div class="stat-label bangla-font">ইক্সাম</div>
-        </div>
-        <div class="stat-card fade-in" id="mission-stats">
-          <div class="stat-number">60+</div>
-          <div class="stat-label bangla-font">মিশন</div>
-        </div>
       </div>
       <div class="section-title">
         <h2 class="bangla-font">আজকের ক্লাস</h2>
