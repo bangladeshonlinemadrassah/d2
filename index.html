@@ -222,6 +222,7 @@
       font-size: 0.95rem;
       max-height: 300px;
       margin-bottom: 24px;
+      cursor: pointer;
     }
 
     .slideshow-image {
@@ -1947,9 +1948,443 @@
         font-size: 0.75rem;
       }
     }
+
+    /* Default Page Styles */
+    #default-page {
+      font-family: "Poppins", sans-serif;
+      color: white;
+      background: linear-gradient(135deg, #14002b, #260042, #000000, #32005f, #001f3f);
+      background-size: 500% 500%;
+      animation: gradientShift 18s ease infinite;
+      background-attachment: fixed;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* HEADER */
+    #default-page header {
+      display: block;
+      text-align: center;
+      padding: 7px 10px;
+      background: linear-gradient(90deg, #3a0ca3aa, #7209b7aa, #f72585aa);
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+    }
+
+    #default-page .logo h3 {
+      font-family: "Russo One", sans-serif;
+      font-size: 40px;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, #ff00ff, #00eaff, #ffea00, #ff6bcb, #00ff55);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 12px #ffffff55;
+      display: inline-block;
+      margin: 6px 0;
+    }
+    
+    /* TITLE */
+    #default-page h1 {
+      text-align: center;
+      font-size: 38px;
+      margin-top: 20px;
+      font-family: "Russo One", sans-serif;
+      background: linear-gradient(90deg, #ff00ff, #00eaff, #ffea00, #ff6bcb, #00ff55);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 12px #ffffff55;
+    }
+
+    #default-page h2 {
+      text-align: center;
+      margin-top: 5px;
+      font-size: 18px;
+      opacity: 0.85;
+      color: #e5dfff;
+    }
+
+    /* BANNER */
+    #default-page .teacher-banner img {
+      width: 98%;
+      height: 200px;
+      display: block;
+      margin: 25px auto;
+      border-radius: 22px;
+      object-fit: cover;
+      border: 3px solid #00c3ff;
+      box-shadow: 0 8px 30px #00000088;
+    }
+
+    /* MAIN BUTTON */
+    #default-page .main-btn {
+      margin: 25px auto;
+      padding: 18px 45px;
+      display: block;
+      font-size: 22px;
+      font-weight: 700;
+      text-align: center;
+      border-radius: 50px;
+      cursor: pointer;
+      background: linear-gradient(45deg, #ff00c8, #00eaff, #ffea00, #ff0080, #00ff55);
+      background-size: 400% 400%;
+      animation: glowMove 4s linear infinite;
+      color: white;
+      border: none;
+      box-shadow: 0 0 25px #ff00ff88;
+      width: fit-content;
+    }
+
+    @keyframes glowMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* MOTIVATION BOX */
+    #default-page .motivation-box {
+      width: 90%;
+      margin: 20px auto 35px;
+      padding: 18px 20px;
+      background: linear-gradient(135deg, #ffffff10, #00eaff22, #ff00c822);
+      border-radius: 18px;
+      text-align: center;
+      border: 2px solid #00eaff66;
+      box-shadow: 0 0 25px #00eaff44;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #default-page .motivation-box p {
+      font-size: 18px;
+      font-weight: 600;
+      color: #00ffea;
+      animation: fadeText 1s ease;
+      margin: 0;
+    }
+
+    /* COURSES */
+    #default-page .courses {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      width: 90%;
+      margin: auto;
+      gap: 20px;
+    }
+
+    #default-page .course-box {
+      background: linear-gradient(135deg, #ffffff10, #8900f522);
+      padding: 15px;
+      border-radius: 20px;
+      text-align: center;
+      border: 2px solid #ffffff22;
+      box-shadow: 0 0 20px #5500ff55;
+    }
+
+    #default-page .course-img img {
+      width: 100%;
+      height: 140px;
+      border-radius: 14px;
+      object-fit: cover;
+      border: 2px solid #00eaff44;
+    }
+
+    #default-page .course-box p {
+      margin-top: 10px;
+      font-size: 17px;
+      color: #ffea00;
+      cursor: pointer;
+    }
+
+    /* TEACHER BOX */
+    #default-page .teacher-box {
+      width: 85%;
+      margin: 40px auto;
+      padding: 35px;
+      background: linear-gradient(135deg, #ffffff10, #ff00c822, #00eaff22);
+      border-radius: 25px;
+      text-align: center;
+      border: 3px solid #ff00ff55;
+      box-shadow: 0 0 35px #ff00ff55;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    #default-page .single-teacher {
+      text-align: center;
+    }
+
+    #default-page .single-teacher img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #00ffe5;
+      box-shadow: 0 0 20px #00ffe588;
+    }
+
+    #default-page .t-name {
+      margin-top: 15px;
+      color: #ffea00;
+      font-size: 22px;
+      font-weight: 700;
+      background: linear-gradient(90deg, #ff00ff, #00eaff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 10px #ffea0044;
+    }
+
+    #default-page .t-position {
+      margin-top: 8px;
+      font-size: 18px;
+      color: #00ffea;
+    }
+
+    #default-page .t-exp {
+      margin-top: 5px;
+      font-size: 16px;
+      color: #e5dfff;
+    }
+
+    #default-page .t-summary {
+      margin-top: 5px;
+      font-size: 14px;
+      color: #ffffffcc;
+      padding: 0 10px;
+    }
+
+    /* FOOTER */
+    #default-page footer {
+      margin-top: 40px;
+      background: linear-gradient(135deg, #1a0033ee, #320059ee, #000522ee);
+      padding: 35px 20px;
+      text-align: center;
+      color: #e2d9ff;
+      border-top: 3px solid #ff00ff88;
+      box-shadow: 0 -5px 35px #000000aa;
+      border-radius: 20px 20px 0 0;
+    }
+
+    #default-page footer h3 {
+      margin-top: 10px;
+      font-size: 22px;
+      color: #00eaff;
+      font-family: "Pacifico", cursive;
+      text-shadow: 0 0 15px #00eaff99;
+    }
+
+    #default-page .social-icons img {
+      width: 45px;
+      margin: 12px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px #00eaffaa;
+    }
+
+    /* MODAL STYLES */
+    #default-page .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8);
+      padding-top: 60px;
+    }
+
+    #default-page .modal-content {
+      position: relative;
+      background: linear-gradient(135deg, #1a0033, #320059, #000522);
+      margin: 5% auto;
+      padding: 30px;
+      border: 2px solid #00eaff66;
+      width: 80%;
+      max-width: 600px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px #00eaff44;
+      text-align: center;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    #default-page .modal-img {
+      width: 100%;
+      height: auto;
+      border-radius: 14px;
+      border: 2px solid #00eaff44;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    #default-page .modal-details {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #e5dfff;
+      text-align: left;
+      padding: 0 15px;
+      font-weight: 400;
+    }
+
+    #default-page .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: #fff;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      background: rgba(255, 0, 128, 0.2);
+      padding: 5px 10px;
+      border: 1px solid #ff00ff;
+      border-radius: 0;
+      box-shadow: 0 0 10px #ff00ff88;
+    }
+
+    #default-page .close:hover,
+    #default-page .close:focus {
+      color: #ffea00;
+      background: rgba(255, 0, 128, 0.4);
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      #default-page .courses { grid-template-columns: 1fr; }
+      #default-page h1 { font-size: 30px; }
+      #default-page .teacher-box { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
+  <!-- Default Page -->
+  <div id="default-page">
+    <header>
+      <div class="logo">
+        <h3>BOM</h3></div>
+    </header>
+
+    <h1>বাংলাদেশ অনলাইন মাদ্রাসা</h1>
+    <h2>দেশজুড়ে মাদ্রাসা শিক্ষার্থীদের বিশ্বস্ত শিক্ষা সঙ্গী</h2>
+
+    <div class="teacher-banner">
+      <img src="https://i.imgur.com/CR18xz1.jpeg" alt="">
+    </div>
+
+    <button class="main-btn" id="go-to-main-btn">আপনার এনরোলকৃত কোর্স</button>
+
+    <!-- MOTIVATION AREA -->
+    <div class="motivation-box">
+      <p id="motivationText">শেখা মানে প্রতিদিন এক ধাপ এগিয়ে যাওয়া।</p>
+    </div>
+
+    <!-- COURSES -->
+    <div class="courses">
+
+      <div class="course-box">
+        <div class="course-img">
+          <img src="COURSE_IMAGE_1" alt="">
+        </div>
+        <p class="details-btn" data-course="1">ডিটেল্স</p>
+      </div>
+
+      <div class="course-box">
+        <div class="course-img">
+          <img src="COURSE_IMAGE_2" alt="">
+        </div>
+        <p class="details-btn" data-course="2">ডিটেল্স</p>
+      </div>
+
+      <div class="course-box">
+        <div class="course-img">
+          <img src="COURSE_IMAGE_3" alt="">
+        </div>
+        <p class="details-btn" data-course="3">ডিটেল্স</p>
+      </div>
+
+      <div class="course-box">
+        <div class="course-img">
+          <img src="COURSE_IMAGE_4" alt="">
+        </div>
+        <p class="details-btn" data-course="4">ডিটেল্স</p>
+      </div>
+
+    </div>
+
+    <!-- TEACHER BOX -->
+    <div class="teacher-box" aria-label="Teachers">
+      <!-- Riab Hasan -->
+      <div class="single-teacher" role="article" aria-label="Riab Hasan">
+        <img src="https://i.imgur.com/Dl21S5x.jpeg" alt="Riab Hasan">
+        <div class="t-name">Riad Hasan</div>
+        <div class="t-position">CEO &amp; Founder</div>
+        <div class="t-exp">Experience: 6 Years</div>
+        <div class="t-summary">
+          Riad Hasan is the visionary founder and CEO of Bangladesh Online Madrasa. He studied at the International Islamic University Chittagong (IIUC) and focuses on integrating technology with education to create accessible learning platforms.
+        </div>
+      </div>
+
+      <!-- Arabic Language Teacher -->
+      <div class="single-teacher" role="article" aria-label="Arabic Language Teacher">
+        <img src="https://i.imgur.com/xbCkScP.jpeg" alt="Arabic Language Teacher">
+        <div class="t-name">Md. Osman Goni</div>
+        <div class="t-position">Lecturer in Arabic</div>
+        <div class="t-exp">Experience: 15 Years</div>
+        <div class="t-summary">
+          A skilled Arabic language instructor with academic training from the Islamic University, Kushtia. Uses clear explanation and structured lessons to build students' understanding of Arabic and Islamic studies.
+        </div>
+      </div>
+
+      <!-- Dh Shipon -->
+      <div class="single-teacher" role="article" aria-label="Dh Shipon">
+        <img src="https://i.imgur.com/TbM78cK.jpeg" alt="Dh Shipon">
+        <div class="t-name">Dh Shipon</div>
+        <div class="t-position">Lecturer, Department of English</div>
+        <div class="t-exp">Experience: 13 Years</div>
+        <div class="t-summary">
+          Dh Shipon is a dedicated English educator with B.A. (Honours) and M.A. (First Class) from the University of Chittagong. He focuses on literature and effective, engaging teaching methods.
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+
+      <h3>Md Riad Hasan</h3>
+      <p>CEO & Founder</p>
+
+      <br>
+
+      <p>📍 ঠিকানা: Level-4, 34, Banani, Dhaka</p>
+      <p>📞 হেল্পলাইন: 01XXXXXXXXX</p>
+      <p>📧 ইমেইল: YOUR_SUPPORT_EMAIL</p>
+
+      <div class="social-icons">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png">
+      </div>
+
+      <p style="opacity:0.7; margin-top:20px;">© বাংলাদেশ অনলাইন মাদ্রাসা 2025 — All Rights Reserved</p>
+    </footer>
+
+    <!-- MODAL -->
+    <div id="courseModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <img id="modalImage" class="modal-img" src="" alt="">
+        <div id="modalDetails" class="modal-details"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- Loading Overlay -->
   <div id="loading-overlay" class="hidden">
     <div class="loading-box">
@@ -1962,7 +2397,7 @@
     </div>
   </div>
 
-  <div id="login-page">
+  <div id="login-page" style="display: none;">
     <div class="login-container">
       <div class="welcome-message">
         <h1 class="bangla-font">ALIM-26 "Final Stage Preparation Course"</h1>
@@ -2084,7 +2519,7 @@
         <a class="pill subject-link" href="#" data-name="ইক্সাম"><span><i class="fas fa-file-alt"></i> <span class="bangla-font">ইক্সাম</span></span><span class="go bangla-font">খুলুন</span></a>
         <a class="pill subject-link" href="#" data-name="ক্লাসের লেকচার শীট"><span><i class="fas fa-file-pdf"></i> <span class="bangla-font">ক্লাসের লেকচার শীট</span></span><span class="go bangla-font">খুলুন</span></a>
         <a class="pill subject-link" href="#" data-name="পরীক্ষার রেজাল্ট শীট"><span><i class="fas fa-chart-bar"></i> <span class="bangla-font">পরীক্ষার রেজাল্ট শীট</span></span><span class="go bangla-font">খুলুন</span></a>
-        <a class="pill subject-link" href="#" data-name="অন্যান্য"><span><i class="fas fa-ellipsis-h"></i> <span class="bangla-font">অন্যান্য</span></span><span class="go bangla-font">খুলুন</span></a>
+        <a class="pill subject-link" href="#" data-name="সাজেশন্স"><span><i class="fas fa-ellipsis-h"></i> <span class="bangla-font">সাজেশন্স</span></span><span class="go bangla-font">খুলুন</span></a>
           </div>
     </main>
     <div class="container">
@@ -2228,8 +2663,83 @@
 <div class="success-message" id="successMessage">ফর্ম সফলভাবে জমা হয়েছে!</div>
 <div id="notification" class="notification"></div>
   <script>
-    // আপনার মূল JavaScript কোড এখানে রাখুন
-    // এটি অপরিবর্তিত রাখা হয়েছে কারণ আপনি শুধুমাত্র CSS পরিবর্তন চেয়েছিলেন
+    // Default Page Functionality
+    let motivationList = [
+      "শেখা বন্ধ হলে উন্নতি বন্ধ হয়ে যায়।",
+      "আপনি পারবে — শুধু শুরুটা করে ফেলুন।",
+      "ধৈর্য আর পরিশ্রমই সফলতার চাবিকাঠি।",
+      "প্রতিদিন ছোট ছোট উন্নতিই বড় সফলতা আনে।",
+      "জ্ঞানই মানুষের আসল শক্তি।",
+      "যে চেষ্টা করে, আল্লাহ তার পথ খুলে দেন।"
+    ];
+
+    let mIndex = 0;
+
+    function initDefaultPage() {
+      // Motivation text rotation
+      setInterval(() => {
+        mIndex = (mIndex + 1) % motivationList.length;
+        document.getElementById("motivationText").innerText = motivationList[mIndex];
+      }, 5000);
+
+      // Course Details Data (Demo)
+      const courseDetails = {
+        1: {
+          img: "COURSE_IMAGE_1",
+          details: "এটি আরবি ভাষা কোর্সের ডেমো। এখানে ব্যাকরণ, শব্দভান্ডার, এবং কথোপকথনের পাঠ অন্তর্ভুক্ত। এই কোর্সটি শিক্ষার্থীদের আরবি ভাষায় দক্ষতা অর্জন করতে সাহায্য করে। আরও বিস্তারিত তথ্য: সপ্তাহে ৩টি ক্লাস, মোট ১২টি মডিউল, এবং প্র্যাকটিস সেশন। এটি একটি দীর্ঘ টেক্সট যাতে স্ক্রল করা যায়: লোরেম ইপসাম ডলর সিট আমেট, কনসেকটেটুর অ্যাডিপিসিং এলিট। সেড ডো ইউসমোড টেম্পোর ইনসিডিডান্ট উট ল্যাবোরে এট ডলোরে ম্যাগনা অ্যালিকুয়া। উট এনিম অ্যাড মিনিম ভেনিয়াম, কুইস নস্ট্রুড এক্সারসিটেশন উল্লামকো ল্যাবোরিস নিসি উট অ্যালিকুইপ এক্স ইএ কমোডো কনসেকুয়াট। ডুইস অটে ইরুরে ডলর ইন রেপ্রেহেন্ডেরিট ইন ভলুপটেট ভেলিট এসে সিল্লুম ডলোরে ইউ ফুগিয়াট নুল্লা প্যারিয়াটুর। এক্সসেপ্টুর সিন্ট অককায়েকাট কুপিডাটাট নন প্রোইডেন্ট, সান্ট ইন কুলপা কুই অফিশিয়া ডেসেরান্ট মোল্লিট অ্যানিম ইড এস্ট ল্যাবোরাম।"
+        },
+        2: {
+          img: "COURSE_IMAGE_2",
+          details: "এটি ইসলামিক স্টাডিজ কোর্সের ডেমো। এখানে কুরআন, হাদিস, এবং ফিকহের পাঠ অন্তর্ভুক্ত। এই কোর্সটি শিক্ষার্থীদের ইসলামিক জ্ঞান বৃদ্ধি করে। আরও বিস্তারিত তথ্য: সপ্তাহে ৪টি ক্লাস, মোট ১০টি মডিউল, এবং কুইজ। এটি একটি দীর্ঘ টেক্সট যাতে স্ক্রল করা যায়: লোরেম ইপসাম ডলর সিট আমেট, কনসেকটেটুর অ্যাডিপিসিং এলিট। সেড ডো ইউসমোড টেম্পোর ইনসিডিডান্ট উট ল্যাবোরে এট ডলোরে ম্যাগনা অ্যালিকুয়া। উট এনিম অ্যাড মিনিম ভেনিয়াম, কুইস নস্ট্রুড এক্সারসিটেশন উল্লামকো ল্যাবোরিস নিসি উট অ্যালিকুইপ এক্স ইএ কমোডো কনসেকুয়াট। ডুইস অটে ইরুরে ডলর ইন রেপ্রেহেন্ডেরিট ইন ভলুপটেট ভেলিট এসে সিল্লুম ডলোরে ইউ ফুগিয়াট নুল্লা প্যারিয়াটুর। এক্সসেপ্টুর সিন্ট অককায়েকাট কুপিডাটাট নন প্রোইডেন্ট, সান্ট ইন কুলপা কুই অফিশিয়া ডেসেরান্ট মোল্লিট অ্যানিম ইড এস্ট ল্যাবোরাম।"
+        },
+        3: {
+          img: "COURSE_IMAGE_3",
+          details: "এটি ইংরেজি কোর্সের ডেমো। এখানে গ্রামার, লিটারেচার, এবং কনভারসেশনের পাঠ অন্তর্ভুক্ত। এই কোর্সটি শিক্ষার্থীদের ইংরেজিতে দক্ষতা অর্জন করতে সাহায্য করে। আরও বিস্তারিত তথ্য: সপ্তাহে ৩টি ক্লাস, মোট ৮টি মডিউল, এবং অ্যাসাইনমেন্ট। এটি একটি দীর্ঘ টেক্সট যাতে স্ক্রল করা যায়: লোরেম ইপসাম ডলর সিট আমেট, কনসেকটেটুর অ্যাডিপিসিং এলিট। সেড ডো ইউসমোড টেম্পোর ইনসিডিডান্ট উট ল্যাবোরে এট ডলোরে ম্যাগনা অ্যালিকুয়া। উট এনিম অ্যাড মিনিম ভেনিয়াম, কুইস নস্ট্রুড এক্সারসিটেশন উল্লামকো ল্যাবোরিস নিসি উট অ্যালিকুইপ এক্স ইএ কমোডো কনসেকুয়াট। ডুইস অটে ইরুরে ডলর ইন রেপ্রেহেন্ডেরিট ইন ভলুপটেট ভেলিট এসে সিল্লুম ডলোরে ইউ ফুগিয়াট নুল্লা প্যারিয়াটুর। এক্সসেপ্টুর সিন্ট অককায়েকাট কুপিডাটাট নন প্রোইডেন্ট, সান্ট ইন কুলপা কুই অফিশিয়া ডেসেরান্ট মোল্লিট অ্যানিম ইড এস্ট ল্যাবোরাম।"
+        },
+        4: {
+          img: "COURSE_IMAGE_4",
+          details: "এটি কুরআন তিলাওয়াত কোর্সের ডেমো। এখানে তাজবীদ, মখরাজ, এবং রেকর্ডিংয়ের পাঠ অন্তর্ভুক্ত। এই কোর্সটি শিক্ষার্থীদের কুরআন পড়ায় দক্ষতা অর্জন করতে সাহায্য করে। আরও বিস্তারিত তথ্য: সপ্তাহে ২টি ক্লাস, মোট ১৫টি মডিউল, এবং প্র্যাকটিস। এটি একটি দীর্ঘ টেক্সট যাতে স্ক্রল করা যায়: লোরেম ইপসাম ডলর সিট আমেট, কনসেকটেটুর অ্যাডিপিসিং এলিট। সেড ডো ইউসমোড টেম্পোর ইনসিডিডান্ট উট ল্যাবোরে এট ডলোরে ম্যাগনা অ্যালিকুয়া। উট এনিম অ্যাড মিনিম ভেনিয়াম, কুইস নস্ট্রুড এক্সারসিটেশন উল্লামকো ল্যাবোরিস নিসি উট অ্যালিকুইপ এক্স ইএ কমোডো কনসেকুয়াট। ডুইস অটে ইরুরে ডলর ইন রেপ্রেহেন্ডেরিট ইন ভলুপটেট ভেলিট এসে সিল্লুম ডলোরে ইউ ফুগিয়াট নুল্লা প্যারিয়াটুর। এক্সসেপ্টুর সিন্ট অককায়েকাট কুপিডাটাট নন প্রোইডেন্ট, সান্ট ইন কুলপা কুই অফিশিয়া ডেসেরান্ট মোল্লিট অ্যানিম ইড এস্ট ল্যাবোরাম।"
+        }
+      };
+
+      // Modal Functionality
+      const modal = document.getElementById("courseModal");
+      const modalImg = document.getElementById("modalImage");
+      const modalDetails = document.getElementById("modalDetails");
+      const closeBtn = document.getElementsByClassName("close")[0];
+
+      document.querySelectorAll(".details-btn").forEach(btn => {
+        btn.addEventListener("click", function() {
+          const courseId = this.getAttribute("data-course");
+          const course = courseDetails[courseId];
+          modalImg.src = course.img;
+          modalDetails.innerHTML = course.details;
+          modal.style.display = "block";
+          document.body.style.overflow = "hidden"; // Prevent background scrolling
+        });
+      });
+
+      closeBtn.addEventListener("click", function() {
+        modal.style.display = "none";
+        document.body.style.overflow = ""; // Restore scrolling
+      });
+
+      window.addEventListener("click", function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+          document.body.style.overflow = ""; // Restore scrolling
+        }
+      });
+
+      // Go to main page button
+      document.getElementById('go-to-main-btn').addEventListener('click', function() {
+        document.getElementById('default-page').style.display = 'none';
+        document.getElementById('login-page').style.display = 'flex';
+        window.scrollTo(0, 0);
+      });
+    }
+
+    // Main Website Functionality
     const API_URL = "https://script.google.com/macros/s/AKfycbxbkM3I0Zp_Bqr4XJcjNB6A82h-RYGXUYq7oiNkmhAuJzslOYJtPjhNmuIIwJXTaCzgnA/exec";
 
 function $(sel, root = document) { return root.querySelector(sel); }
@@ -2278,7 +2788,7 @@ const availableSubjects = [
       "ইক্সাম",
       "ক্লাসের লেকচার শীট",
       "পরীক্ষার রেজাল্ট শীট",
-      "অন্যান্য"
+      "সাজেশন্স"
     ];
 
 const LOGIN_EXPIRY_KEY = 'alim26_login_expiry';
@@ -2549,7 +3059,7 @@ function normalizeRows(rows) {
       return acc;
     }, {});
 
-    const specialFolders = ["মিশন", "ক্লাসের লেকচার শীট", "পরীক্ষার রেজাল্ট শীট", "অন্যান্য"];
+    const specialFolders = ["মিশন", "ক্লাসের লেকচার শীট", "পরীক্ষার রেজাল্ট শীট", "সাজেশন্স"];
 
     const normalizedRows = [];
     Object.keys(groupedBySubject).forEach(subject => {
@@ -2694,7 +3204,7 @@ function renderCards(rows, root) {
   rows.forEach(r => {
     if (!r) return;
 
-    const specialFolders = ["ক্লাসের লেকচার শীট", "পরীক্ষার রেজাল্ট শীট", "অন্যান্য"];
+    const specialFolders = ["ক্লাসের লেকচার শীট", "পরীক্ষার রেজাল্ট শীট", "সাজেশন্স"];
     let buttonText;
     let isExpired = false;
 
@@ -3341,28 +3851,10 @@ dashboardBtn.addEventListener('click', () => {
   showDashboard();
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  if (checkLoginExpiry()) {
-    loginPage.style.display = 'none';
-    mainPage.style.display = 'block';
-    loadInitialData();
-    showAddClassButton();
-    showDashboardButton();
-  } else {
-    loginPage.style.display = 'flex';
-    mainPage.style.display = 'none';
-    subjectPage.style.display = 'none';
-  }
-  initializeEventListeners();
-  
-  // Initialize dynamic placeholder
-  initDynamicPlaceholder();
-  
-  // Initialize slideshow
-  initSlideshow();
-});
+// Slideshow functionality with pause/resume
+let slideshowInterval;
+let slideshowPaused = false;
 
-// Slideshow functionality
 function initSlideshow() {
   const images = [
     'https://example.com/image1.jpg', // Replace with actual URLs
@@ -3375,6 +3867,8 @@ function initSlideshow() {
   let currentIndex = 0;
   
   function showNextImage() {
+    if (slideshowPaused) return;
+    
     slideshowImages.forEach((img, index) => {
       img.classList.remove('active');
       if (index === currentIndex) {
@@ -3384,11 +3878,29 @@ function initSlideshow() {
     currentIndex = (currentIndex + 1) % images.length;
   }
   
+  function startSlideshow() {
+    slideshowPaused = false;
+    slideshowInterval = setInterval(showNextImage, 4000);
+  }
+  
+  function stopSlideshow() {
+    slideshowPaused = true;
+    clearInterval(slideshowInterval);
+  }
+  
+  // Toggle slideshow on click
+  const slideshowContainer = document.querySelector('.slideshow-container');
+  slideshowContainer.addEventListener('click', () => {
+    if (slideshowPaused) {
+      startSlideshow();
+    } else {
+      stopSlideshow();
+    }
+  });
+  
   // Initial show
   showNextImage();
-  
-  // Change every 4 seconds
-  setInterval(showNextImage, 4000);
+  startSlideshow();
 }
 
 const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzEX1EuBWpSMlZ9zbXs1lAVQkOTdeV779SsD6SF6RllQGMYxcHJu30p5BPzW7O-PAbysg/exec";
@@ -3529,20 +4041,14 @@ window.addEventListener('click',(e)=>{
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Notice bar code
-  const noticeBar = document.querySelector('.notice-bar');
-  const noticeSpan = document.querySelector('.notice-bar span');
+  // Initialize default page
+  initDefaultPage();
   
-  if (noticeBar && noticeSpan) {
-    noticeBar.style.visibility = 'visible';
-    noticeBar.style.opacity = '1';
-    
-    setTimeout(() => {
-      noticeSpan.style.animation = 'none';
-      void noticeSpan.offsetWidth;
-      noticeSpan.style.animation = 'marquee 40s linear infinite 0s';
-    }, 10);
-  }
+  // Show default page initially
+  document.getElementById('default-page').style.display = 'block';
+  document.getElementById('login-page').style.display = 'none';
+  document.getElementById('main-page').style.display = 'none';
+  document.getElementById('subject-page').style.display = 'none';
 
   // Button visibility - with page reload check
   const urlParams = new URLSearchParams(window.location.search);
