@@ -2673,87 +2673,93 @@
 
   <script>
     // Default Page Scripts
-    document.addEventListener('DOMContentLoaded', function() {
-      // MOTIVATION TEXT ROTATION
-      let motivationList = [
-        "শেখা বন্ধ হলে উন্নতি বন্ধ হয়ে যায়।",
-        "আপনি পারবে — শুধু শুরুটা করে ফেলুন।",
-        "ধৈর্য আর পরিশ্রমই সফলতার চাবিকাঠি।",
-        "প্রতিদিন ছোট ছোট উন্নতিই বড় সাফলতা আনে।",
-        "জ্ঞানই মানুষের আসল শক্তি।",
-        "যে চেষ্টা করে, আল্লাহ তার পথ খুলে দেন।"
-      ];
+document.addEventListener('DOMContentLoaded', function() {
+  // MOTIVATION TEXT ROTATION
+  let motivationList = [
+    "শেখা বন্ধ হলে উন্নতি বন্ধ হয়ে যায়।",
+    "আপনি পারবে — শুধু শুরুটা করে ফেলুন।",
+    "ধৈর্য আর পরিশ্রমই সফলতার চাবিকাঠি।",
+    "প্রতিদিন ছোট ছোট উন্নতিই বড় সাফলতা আনে।",
+    "জ্ঞানই মানুষের আসল শক্তি।",
+    "যে চেষ্টা করে, আল্লাহ তার পথ খুলে দেন।"
+  ];
 
-      let mIndex = 0;
+  let mIndex = 0;
 
-      setInterval(() => {
-        mIndex = (mIndex + 1) % motivationList.length;
-        document.getElementById("motivationText").innerText = motivationList[mIndex];
-      }, 5000);
+  setInterval(() => {
+    mIndex = (mIndex + 1) % motivationList.length;
+    document.getElementById("motivationText").innerText = motivationList[mIndex];
+  }, 5000);
 
-      // Course Details Data (Demo)
-      const courseDetails = {
-        1: {
-          img: "COURSE_IMAGE_1",
-          details: "এটি আরবি ভাষা কোর্সের ডেমো। এখানে ব্যাকরণ, শব্দভান্ডার, এবং কথোপকথনের পাঠ অন্তর্ভুক্ত। এই কোর্সটি শিক্ষার্থীদের আরবি ভাষায় দক্ষতা অর্জন করতে সাহায্য করে। আরও বিস্তারিত তথ্য: সপ্তাহে ৩টি ক্লাস, মোট ১২টি মডিউল, এবং প্র্যাকটিস সেশন। এটি একটি দীর্ঘ টেক্সট যাতে স্ক্রল করা যায়: লোরেম ইপসাম ডলর সিট আমেট, কনসেকটেটুর অ্যাডিপিসিং এলিট। সেড ডো ইউসমোড টেম্পোর ইনসিডিডান্ট উট ল্যাবোরে এট ডলোরে ম্যাগনা অ্যালিকুয়া। উট এনিম অ্যাড মিনিম ভেনিয়াম, কুইস নস্ট্রুড এক্সারসিটেশন উল্লামকো ল্যাবোরিস নিসি উট অ্যালিকুইপ এক্স ইএ কমোডো কনসেকুয়াট। ডুইস অটে ইরুরে ডলর ইন রেপ্রেহেন্ডেরিট ইন ভলুপটেট ভেলিট এসে সিল্লুম ডলোরে ইউ ফুগিয়াট নুল্লা প্যারিয়াটুর। এক্সসেপ্টুর সিন্ট অককায়েকাট কুপিডাটাট নন প্রোইডেন্ট, সান্ট ইন কুলপা কুই অফিশিয়া ডেসেরান্ট মোল্লিট অ্যানিম ইড এস্ট ল্যাবোরাম।"
-        },
-        2: {
-          img: "COURSE_IMAGE_2",
-          details: "এটি ইসলামিক স্টাডিজ কোর্সের ডেমো। এখানে কুরআন, হাদিস, এবং ফিকহের পাঠ অন্তর্ভুক্ত। এই কোর্সটি শিক্ষার্থীদের ইসলামিক জ্ঞান বৃদ্ধি করে। আরও বিস্তারিত তথ্য: সপ্তাহে ৪টি ক্লাস, মোট ১০টি মডিউল, এবং কুইজ। এটি একটি দীর্ঘ টেক্সট যাতে স্ক্রল করা যায়: লোরেম ইপসাম ডলর সিট আমেট, কনসেকটেটুর অ্যাডিপিসিং এলিট। সেড ডো ইউসমোড টেম্পোর ইনসিডিডান্ট উট ল্যাবোরে এট ডলোরে ম্যাগনা অ্যালিকুয়া। উট এনিম অ্যাড মিনিম ভেনিয়াম, কুইস নস্ট্রুড এক্সারসিটেশন উল্লামকো ল্যাবোরিস নিসি উট অ্যালিকুইপ এক্স ইএ কমোডো কনসেকুয়াট। ডুইস অটে ইরুরে ডলর ইন রেপ্রেহেন্ডেরিট ইন ভলুপটেট ভেলিট এসে সিল্লুম ডলোরে ইউ ফুগিয়াট নুল্লা প্যারিয়াটুর। এক্সসেপ্টুর সিন্ট অককায়েকাট কুপিডাটাট নন প্রোইডেন্ট, সান্ট ইন কুলপা কুই অফিশিয়া ডেসেরান্ট মোল্লিট অ্যানিম ইড এস্ট ল্যাবোরাম।"
-        },
-        3: {
-          img: "COURSE_IMAGE_3",
-          details: "এটি ইংরেজি কোর্সের ডেমো। এখানে গ্রামার, লিটারেচার, এবং কনভারসেশনের পাঠ অন্তর্ভুক্ত। এই কোর্সটি শিক্ষার্থীদের ইংরেজিতে দক্ষতা অর্জন করতে সাহায্য করে। আরও বিস্তারিত তথ্য: সপ্তাহে ৩টি ক্লাস, মোট ৮টি মডিউল, এবং অ্যাসাইনমেন্ট। এটি একটি দীর্ঘ টেক্সট যাতে স্ক্রল করা যায়: লোরেম ইপসাম ডলর সিট আমেট, কনসেকটেটুর অ্যাডিপিসিং এলিট। সেড ডো ইউসমোড টেম্পোর ইনসিডিডান্ট উট ল্যাবোরে এট ডলোরে ম্যাগনা অ্যালিকুয়া। উট এনিম অ্যাড মিনিম ভেনিয়াম, কুইস নস্ট্রুড এক্সারসিটেশন উল্লামকো ল্যাবোরিস নিসি উট অ্যালিকুইপ এক্স ইএ কমোডো কনসেকুয়াট। ডুইস অটে ইরুরে ডলর ইন রেপ্রেহেন্ডেরিট ইন ভলুপটেট ভেলিট এসে সিল্লুম ডলোরে ইউ ফুগিয়াট নুল্লা প্যারিয়াটুর। এক্সসেপ্টুর সিন্ট অককায়েকাট কুপিডাটাট নন প্রোইডেন্ট, সান্ট ইন কুলপা কুই অফিশিয়া ডেসেরান্ট মোল্লিট অ্যানিম ইড এস্ট ল্যাবোরাম।"
-        },
-        4: {
-          img: "COURSE_IMAGE_4",
-          details: "এটি কুরআন তিলাওয়াত কোর্সের ডেমো। এখানে তাজবীদ, মখরাজ, এবং রেকর্ডিংয়ের পাঠ অন্তর্ভুক্ত। এই কোর্সটি শিক্ষার্থীদের কুরআন পড়ায় দক্ষতা অর্জন করতে সাহায্য করে। আরও বিস্তারিত তথ্য: সপ্তাহে ২টি ক্লাস, মোট ১৫টি মডিউল, এবং প্র্যাকটিস। এটি একটি দীর্ঘ টেক্সট যাতে স্ক্রল করা যায়: লোরেম ইপসাম ডলর সিট আমেট, কনসেকটেটুর অ্যাডিপিসিং এলিট। সেড ডো ইউসমোড টেম্পোর ইনসিডিডান্ট উট ল্যাবোরে এট ডলোরে ম্যাগনা অ্যালিকুয়া। উট এনিম অ্যাড মিনিম ভেনিয়াম, কুইস নস্ট্রুড এক্সারসিটেশন উল্লামকো ল্যাবোরিস নিসি উট অ্যালিকুইপ এক্স ইএ কমোডো কনসেকুয়াট। ডুইস অটে ইরুরে ডলর ইন রেপ্রেহেন্ডেরিট ইন ভলুপটেট ভেলিট এসে সিল্লুম ডলোরে ইউ ফুগিয়াট নুল্লা প্যারিয়াটুর। এক্সসেপ্টুর সিন্ট অককায়েকাট কুপিডাটাট নন প্রোইডেন্ট, সান্ট ইন কুলপা কুই অফিশিয়া ডেসেরান্ট মোল্লিট অ্যানিম ইড এস্ট ল্যাবোরাম।"
-        }
-      };
+  // Course Details Data (Demo)
+  const courseDetails = {
+    1: {
+      img: "COURSE_IMAGE_1",
+      details: "এটি আরবি ভাষা কোর্সের ডেমো। এখানে ব্যাকরণ, শব্দভান্ডার, এবং কথোপকথনের পাঠ অন্তর্ভুক্ত। এই কোর্সটি শিক্ষার্থীদের আরবি ভাষায় দক্ষতা অর্জন করতে সাহায্য করে। আরও বিস্তারিত তথ্য: সপ্তাহে ৩টি ক্লাস, মোট ১২টি মডিউল, এবং প্র্যাকটিস সেশন। এটি একটি দীর্ঘ টেক্সট যাতে স্ক্রল করা যায়: লোরেম ইপসাম ডলর সিট আমেট, কনসেকটেটুর অ্যাডিপিসিং এলিট। সেড ডো ইউসমোড টেম্পোর ইনসিডিডান্ট উট ল্যাবোরে এট ডলোরে ম্যাগনা অ্যালিকুয়া। উট এনিম অ্যাড মিনিম ভেনিয়াম, কুইস নস্ট্রুড এক্সারসিটেশন উল্লামকো ল্যাবোরিস নিসি উট অ্যালিকুইপ এক্স ইএ কমোডো কনসেকুয়াট। ডুইস অটে ইরুরে ডলর ইন রেপ্রেহেন্ডেরিট ইন ভলুপটেট ভেলিট এসে সিল্লুম ডলোরে ইউ ফুগিয়াট নুল্লা প্যারিয়াটুর। এক্সসেপ্টুর সিন্ট অককায়েকাট কুপিডাটাট নন প্রোইডেন্ট, সান্ট ইন কুলপা কুই অফিশিয়া ডেসেরান্ট মোল্লিট অ্যানিম ইড এস্ট ল্যাবোরাম।"
+    },
+    2: {
+      img: "COURSE_IMAGE_2",
+      details: "এটি ইসলামিক স্টাডিজ কোর্সের ডেমো। এখানে কুরআন, হাদিস, এবং ফিকহের পাঠ অন্তর্ভুক্ত। এই কোর্সটি শিক্ষার্থীদের ইসলামিক জ্ঞান বৃদ্ধি করে। আরও বিস্তারিত তথ্য: সপ্তাহে ৪টি ক্লাস, মোট ১০টি মডিউল, এবং কুইজ। এটি একটি দীর্ঘ টেক্সট যাতে স্ক্রল করা যায়: লোরেম ইপসাম ডলর সিট আমেট, কনসেকটেটুর অ্যাডিপিসিং এলিট। সেড ডো ইউসমোড টেম্পোর ইনসিডিডান্ট উট ল্যাবোরে এট ডলোরে ম্যাগনা অ্যালিকুয়া। উট এনিম অ্যাড মিনিম ভেনিয়াম, কুইস নস্ট্রুড এক্সারসিটেশন উল্লামকো ল্যাবোরিস নিসি উট অ্যালিকুইপ এক্স ইএ কমোডো কনসেকুয়াট। ডুইস অটে ইরুরে ডলর ইন রেপ্রেহেন্ডেরিট ইন ভলুপটেট ভেলিট এসে সিল্লুম ডলোরে ইউ ফুগিয়াট নুল্লা প্যারিয়াটুর। এক্সসেপ্টুর সিন্ট অককায়েকাট কুপিডাটাট নন প্রোইডেন্ট, সান্ট ইন কুলপা কুই অফিশিয়া ডেসেরান্ট মোল্লিট অ্যানিম ইড এস্ট ল্যাবোরাম।"
+    },
+    3: {
+      img: "COURSE_IMAGE_3",
+      details: "এটি ইংরেজি কোর্সের ডেমো। এখানে গ্রামার, লিটারেচার, এবং কনভারসেশনের পাঠ অন্তর্ভুক্ত। এই কোর্সটি শিক্ষার্থীদের ইংরেজিতে দক্ষতা অর্জন করতে সাহায্য করে। আরও বিস্তারিত তথ্য: সপ্তাহে ৩টি ক্লাস, মোট ৮টি মডিউল, এবং অ্যাসাইনমেন্ট। এটি একটি দীর্ঘ টেক্সট যাতে স্ক্রল করা যায়: লোরেম ইপসাম ডলর সিট আমেট, কনসেকটেটুর অ্যাডিপিসিং এলিট। সেড ডো ইউসমোড টেম্পোর ইনসিডিডান্ট উট ল্যাবোরে এট ডলোরে ম্যাগনা অ্যালিকুয়া। উট এনিম অ্যাড মিনিম ভেনিয়াম, কুইস নস্ট্রুড এক্সারসিটেশন উল্লামকো ল্যাবোরিস নিসি উট অ্যালিকুইপ এক্স ইএ কমোডো কনসেকুয়াট। ডুইস অটে ইরুরে ডলর ইন রেপ্রেহেন্ডেরিট ইন ভলুপটেট ভেলিট এসে সিল্লুম ডলোরে ইউ ফুগিয়াট নুল্লা প্যারিয়াটুর। এক্সসেপ্টুর সিন্ট অককায়েকাট কুপিডাটাট নন প্রোইডেন্ট, সান্ট ইন কুলপা কুই অফিশিয়া ডেসেরান্ট মোল্লিট অ্যানিম ইড এস্ট ল্যাবোরাম।"
+    },
+    4: {
+      img: "COURSE_IMAGE_4",
+      details: "এটি কুরআন তিলাওয়াত কোর্সের ডেমো। এখানে তাজবীদ, মখরাজ, এবং রেকর্ডিংয়ের পাঠ অন্তর্ভুক্ত। এই কোর্সটি শিক্ষার্থীদের কুরআন পড়ায় দক্ষতা অর্জন করতে সাহায্য করে। আরও বিস্তারিত তথ্য: সপ্তাহে ২টি ক্লাস, মোট ১৫টি মডিউল, এবং প্র্যাকটিস। এটি একটি দীর্ঘ টেক্সট যাতে স্ক্রল করা যায়: লোরেম ইপসাম ডলর সিট আমেট, কনসেকটেটুর অ্যাডিপিসিং এলিট। সেড ডো ইউসমোড টেম্পোর ইনসিডিডান্ট উট ল্যাবোরে এট ডলোরে ম্যাগনা অ্যালিকুয়া। উট এনিম অ্যাড মিনিম ভেনিয়াম, কুইস নস্ট্রুড এক্সারসিটেশন উল্লামকো ল্যাবোরিস নিসি উট অ্যালিকুইপ এক্স ইএ কমোডো কনসেকুয়াট। ডুইস অটে ইরুরে ডলর ইন রেপ্রেহেন্ডেরিট ইন ভলুপটেট ভেলিট এসে সিল্লুম ডলোরে ইউ ফুগিয়াট নুল্লা প্যারিয়াটুর। এক্সসেপ্টুর সিন্ট অককায়েকাট কুপিডাটাট নন প্রোইডেন্ট, সান্ট ইন কুলপা কুই অফিশিয়া ডেসেরান্ট মোল্লিট অ্যানিম ইড এস্ট ল্যাবোরাম।"
+    }
+  };
 
-      // Modal Functionality
-      const modal = document.getElementById("courseModal");
-      const modalImg = document.getElementById("modalImage");
-      const modalDetails = document.getElementById("modalDetails");
-      const closeBtn = document.getElementsByClassName("close")[0];
+  // Modal Functionality
+  const modal = document.getElementById("courseModal");
+  const modalImg = document.getElementById("modalImage");
+  const modalDetails = document.getElementById("modalDetails");
+  const closeBtn = document.getElementsByClassName("close")[0];
 
-      document.querySelectorAll(".details-btn").forEach(btn => {
-        btn.addEventListener("click", function() {
-          const courseId = this.getAttribute("data-course");
-          const course = courseDetails[courseId];
-          modalImg.src = course.img;
-          modalDetails.innerHTML = course.details;
-          modal.style.display = "block";
-          document.body.style.overflow = "hidden";
-        });
-      });
-
-      closeBtn.addEventListener("click", function() {
-        modal.style.display = "none";
-        document.body.style.overflow = "";
-      });
-
-      window.addEventListener("click", function(event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-          document.body.style.overflow = "";
-        }
-      });
-
-      // Go to main page button
-      document.getElementById('go-to-main-btn').addEventListener('click', function() {
-        document.getElementById('default-page').style.display = 'none';
-        if (checkLoginExpiry()) {
-          document.getElementById('main-page').style.display = 'block';
-          loadInitialData();
-        } else {
-          document.getElementById('login-page').style.display = 'flex';
-        }
-      });
-
-      // Show default page initially
-      document.getElementById('default-page').style.display = 'block';
+  document.querySelectorAll(".details-btn").forEach(btn => {
+    btn.addEventListener("click", function() {
+      const courseId = this.getAttribute("data-course");
+      const course = courseDetails[courseId];
+      modalImg.src = course.img;
+      modalDetails.innerHTML = course.details;
+      modal.style.display = "block";
+      document.body.style.overflow = "hidden";
     });
+  });
+
+  closeBtn.addEventListener("click", function() {
+    modal.style.display = "none";
+    document.body.style.overflow = "";
+  });
+
+  window.addEventListener("click", function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+      document.body.style.overflow = "";
+    }
+  });
+
+  // Go to main page button - FIXED VERSION
+  document.getElementById('go-to-main-btn').addEventListener('click', function() {
+    document.getElementById('default-page').style.display = 'none';
+    
+    // Always start main page from top regardless of default page scroll
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    
+    if (checkLoginExpiry()) {
+      document.getElementById('main-page').style.display = 'block';
+      loadInitialData();
+      showAddClassButton();
+      showDashboardButton();
+    } else {
+      document.getElementById('login-page').style.display = 'flex';
+    }
+  });
+
+  // Show default page initially
+  document.getElementById('default-page').style.display = 'block';
+});
 
     // ALIM-26 Website Scripts
     const API_URL = "https://script.google.com/macros/s/AKfycbxbkM3I0Zp_Bqr4XJcjNB6A82h-RYGXUYq7oiNkmhAuJzslOYJtPjhNmuIIwJXTaCzgnA/exec";
