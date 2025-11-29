@@ -2261,6 +2261,352 @@
         font-size: 0.75rem;
       }
     }
+
+    /* Video Player Page Styles */
+    #video-player-page {
+      display: none;
+      background: var(--darker);
+      color: var(--text);
+      font-family: var(--font-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    #video-player-page .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 16px;
+      box-sizing: border-box;
+    }
+
+    #video-player-page h1 {
+      font-size: 22px;
+      text-align: center;
+      margin: 10px 0 15px;
+      letter-spacing: 0.5px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    #video-player-page .player-card {
+      background: linear-gradient(180deg, #0a1225 0%, #0f1a30 100%);
+      padding: 16px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+      transition: transform 0.3s ease;
+    }
+
+    #video-player-page .player-card:hover {
+      transform: translateY(-5px);
+    }
+
+    #video-player-page .aspect {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #000;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+
+    #video-player-page .aspect.portrait {
+      padding-top: 177.78%;
+    }
+
+    #video-player-page #player {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    #video-player-page .blocker {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 40;
+      pointer-events: auto;
+      background: transparent;
+    }
+
+    /* Loading Indicator */
+    #video-player-page #loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 30;
+      color: #fff;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+
+    #video-player-page #loading.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #video-player-page .spinner {
+      border: 4px solid rgba(255,255,255,0.3);
+      border-top: 4px solid #ff4d4d;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 10px;
+    }
+
+    #video-player-page #loading p {
+      font-size: 14px;
+      margin: 5px 0;
+      opacity: 0.8;
+    }
+
+    #video-player-page #loading-progress {
+      width: 200px;
+      height: 6px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 3px;
+      overflow: hidden;
+      margin: 10px auto;
+    }
+
+    #video-player-page #loading-progress-bar {
+      width: 0%;
+      height: 100%;
+      background: #ff4d4d;
+      transition: width 0.3s ease;
+    }
+
+    #video-player-page .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      justify-content: center;
+      margin-top: 14px;
+    }
+
+    #video-player-page .control-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    #video-player-page .btn {
+      background: #ff4d4d;
+      border: 0;
+      padding: 10px 14px;
+      border-radius: 10px;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      transition: all 0.2s ease;
+    }
+
+    #video-player-page .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+    }
+
+    #video-player-page .btn.secondary {
+      background: #4d79ff;
+    }
+
+    #video-player-page .btn.small {
+      padding: 8px 12px;
+      font-size: 14px;
+    }
+
+    #video-player-page .btn.big-btn {
+      padding: 12px 24px;
+      font-size: 18px;
+    }
+
+    #video-player-page .btn.play-btn {
+      background: #4caf50;
+    }
+
+    /* Updated note styles */
+    #video-player-page .note-section {
+      margin-top: 20px;
+      background: var(--card-bg);
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+
+    #video-player-page .note-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    #video-player-page .note-header {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 12px 16px;
+      font-weight: 600;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    #video-player-page .note-row {
+      display: flex;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    #video-player-page .note-row:last-child {
+      border-bottom: none;
+    }
+
+    #video-player-page .note-cell {
+      flex: 1;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    #video-player-page .note-cell i {
+      font-size: 18px;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    #video-player-page * {
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+    }
+
+    /* Portrait fullscreen style */
+    #video-player-page .fullscreen-portrait {
+      position: fixed !important;
+      left: 50% !important;
+      top: 50% !important;
+      width: 100vh !important;
+      height: 100vw !important;
+      z-index: 9999 !important;
+      transform: translate(-50%, -50%) rotate(90deg);
+      transform-origin: center center;
+      border-radius: 10px !important;
+      padding-top: 0 !important;
+      max-width: none !important;
+      max-height: none !important;
+      margin: 0 !important;
+    }
+
+    /* Additional fix for mobile devices */
+    @media (max-width: 768px) {
+      #video-player-page .fullscreen-portrait {
+        width: 100vh !important;
+        height: 100vw !important;
+      }
+    }
+
+    #video-player-page body.fullscreen-locked {
+      overflow: hidden;
+      touch-action: none;
+    }
+
+    @media (max-width: 520px) {
+      #video-player-page .wrap { padding: 10px; }
+      #video-player-page h1 { font-size: 18px; }
+      #video-player-page .btn { padding: 8px 12px; }
+      #video-player-page .note-cell {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    /* Progress bar styles */
+    #video-player-page #progress-container {
+      width: 100%;
+      height: 12px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: height 0.2s ease;
+      margin-top: 10px;
+      position: relative;
+    }
+
+    #video-player-page #progress-container:hover {
+      height: 16px;
+    }
+
+    #video-player-page #progress-bar {
+      height: 100%;
+      background: #ff4d4d;
+      border-radius: 6px;
+      width: 0%;
+      transition: width 0.1s linear;
+      position: relative;
+    }
+
+    #video-player-page #progress-thumb {
+      position: absolute;
+      top: -2px;
+      right: -6px;
+      width: 16px;
+      height: 16px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 5px rgba(0,0,0,0.5);
+      cursor: grab;
+      z-index: 10;
+    }
+
+    #video-player-page #progress-thumb:active {
+      cursor: grabbing;
+    }
+
+    /* Top buttons styles */
+    #video-player-page .top-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      gap: 10px;
+    }
+
+    #video-player-page .custom-btn {
+      background: linear-gradient(135deg, #ff7e5f, #feb47b);
+      padding: 12px;
+      border-radius: 10px;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      color: #fff;
+      font-family: Arial, sans-serif;
+      width: 48%;
+      transition: all 0.2s ease;
+    }
+
+    #video-player-page .custom-btn:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+    }
+
+    #video-player-page .custom-btn small {
+      font-size: 11px;
+      display: block;
+      opacity: 0.8;
+    }
+
+    #video-player-page .custom-btn span {
+      font-size: 16px;
+      font-weight: bold;
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -2572,6 +2918,72 @@
     </footer>
   </div>
 
+  <!-- Video Player Page -->
+  <div id="video-player-page" style="display: none;">
+    <div class="wrap">
+      <div class="player-card">
+        <div class="top-buttons">
+          <div class="custom-btn" id="youtubeBtn">
+            <small>direct</small>
+            <span>YouTube Play</span>
+          </div>
+          <div class="custom-btn" id="folderBtn">
+            <small>Back to</small>
+            <span>Folder Page</span>
+          </div>
+        </div>
+        <div id="aspect" class="aspect">
+          <div id="player"></div>
+          <div id="loading">
+            <div class="spinner"></div>
+            <p>ভিডিও লোড হচ্ছে...<br>ইন্টারনেট স্পিড ঠিক রাখুন</p>
+            <div id="loading-progress">
+              <div id="loading-progress-bar"></div>
+            </div>
+          </div>
+          <div id="blocker" class="blocker" title="কোনো কন্ট্রোল করতে নিচের বোতন ব্যবহার করুন"></div>
+        </div>
+        <div id="progress-container">
+          <div id="progress-bar">
+            <div id="progress-thumb"></div>
+          </div>
+        </div>
+        <div class="controls" style="margin-top:12px">
+          <div class="control-row">
+            <button class="btn play-btn big-btn" id="togglePlayBtn">Play</button>
+          </div>
+          <div class="control-row">
+            <button class="btn" id="stopBtn">Stop</button>
+            <button class="btn" id="rewindBtn">« 10s</button>
+            <button class="btn" id="forwardBtn">10s »</button>
+            <button class="btn" id="muteBtn">Mute</button>
+          </div>
+          <div class="control-row">
+            <button class="btn secondary big-btn" id="portraitBtn">Portrait (Fullscreen)</button>
+          </div>
+        </div>
+        
+        <div class="note-section">
+          <div class="note-header bangla-font">গুরুত্বপূর্ণ তথ্য</div>
+          <div class="note-table">
+            <div class="note-row">
+              <div class="note-cell">
+                <i class="fas fa-info-circle"></i>
+                <span class="bangla-font">ভিডিও পোর্ট্রেট করার পরে মোবাইলের ডিসপ্লের কোনো অংশ বা সাইট ফাকা থাকলে ভিডিও ফ্রম স্ক্রল করে সরিয়ে নিন, ফ্রেম সরে যেয়ে ফুল ইস্কিনে দেখাবে। আপনারা যুম করেও এডজাষ্ট করে নিতে পারবেন পারবেন।</span>
+              </div>
+            </div>
+            <div class="note-row">
+              <div class="note-cell">
+                <i class="fas fa-wifi"></i>
+                <span class="bangla-font">সেরা ভিডিও মান উপভোগ করতে আপনার ইন্টারনেট সংযোগ স্থির ও দ্রুত রাখুন। এই প্লেয়ারটি আপনার ইন্টারনেট গতির উপর ভিত্তি করে ভিডিওর কোয়ালিটি স্বয়ংক্রিয়ভাবে সমন্বয় করে। স্পিড ভালো থাকলে কিছুক্ষণের মধ্যেই ভিডিও ধীরে ধীরে HD মানে চলে যাবে।</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div id="warning-modal" class="warning-modal">
     <div class="modal-content">
       <div class="modal-header">
@@ -2695,19 +3107,19 @@ document.addEventListener('DOMContentLoaded', function() {
   const courseDetails = {
     1: {
       img: "COURSE_IMAGE_1",
-      details: "এটি আরবি ভাষা কোর্সের ডেমো। এখানে ব্যাকরণ, শব্দভান্ডার, এবং কথোপকথনের পাঠ অন্তর্ভুক্ত। এই কোর্সটি শিক্ষার্থীদের আরবি ভাষায় দক্ষতা অর্জন করতে সাহায্য করে। আরও বিস্তারিত তথ্য: সপ্তাহে ৩টি ক্লাস, মোট ১২টি মডিউল, এবং প্র্যাকটিস সেশন। এটি একটি দীর্ঘ টেক্সট যাতে স্ক্রল করা যায়: লোরেম ইপসাম ডলর সিট আমেট, কনসেকটেটুর অ্যাডিপিসিং এলিট। সেড ডো ইউসমোড টেম্পোর ইনসিডিডান্ট উট ল্যাবোরে এট ডলোরে ম্যাগনা অ্যালিকুয়া। উট এনিম অ্যাড মিনিম ভেনিয়াম, কুইস নস্ট্রুড এক্সারসিটেশন উল্লামকো ল্যাবোরিস নিসি উট অ্যালিকুইপ এক্স ইএ কমোডো কনসেকুয়াট। ডুইস অটে ইরুরে ডলর ইন রেপ্রেহেন্ডেরিট ইন ভলুপটেট ভেলিট এসে সিল্লুম ডলোরে ইউ ফুগিয়াট নুল্লা প্যারিয়াটুর। এক্সসেপ্টুর সিন্ট অককায়েকাট কুপিডাটাট নন প্রোইডেন্ট, সান্ট ইন কুলপা কুই অফিশিয়া ডেসেরান্ট মোল্লিট অ্যানিম ইড এস্ট ল্যাবোরাম।"
+      details: "কোনো তথ্য যুক্ত করা হয়নি"
     },
     2: {
       img: "COURSE_IMAGE_2",
-      details: "এটি ইসলামিক স্টাডিজ কোর্সের ডেমো। এখানে কুরআন, হাদিস, এবং ফিকহের পাঠ অন্তর্ভুক্ত। এই কোর্সটি শিক্ষার্থীদের ইসলামিক জ্ঞান বৃদ্ধি করে। আরও বিস্তারিত তথ্য: সপ্তাহে ৪টি ক্লাস, মোট ১০টি মডিউল, এবং কুইজ। এটি একটি দীর্ঘ টেক্সট যাতে স্ক্রল করা যায়: লোরেম ইপসাম ডলর সিট আমেট, কনসেকটেটুর অ্যাডিপিসিং এলিট। সেড ডো ইউসমোড টেম্পোর ইনসিডিডান্ট উট ল্যাবোরে এট ডলোরে ম্যাগনা অ্যালিকুয়া। উট এনিম অ্যাড মিনিম ভেনিয়াম, কুইস নস্ট্রুড এক্সারসিটেশন উল্লামকো ল্যাবোরিস নিসি উট অ্যালিকুইপ এক্স ইএ কমোডো কনসেকুয়াট। ডুইস অটে ইরুরে ডলর ইন রেপ্রেহেন্ডেরিট ইন ভলুপটেট ভেলিট এসে সিল্লুম ডলোরে ইউ ফুগিয়াট নুল্লা প্যারিয়াটুর। এক্সসেপ্টুর সিন্ট অককায়েকাট কুপিডাটাট নন প্রোইডেন্ট, সান্ট ইন কুলপা কুই অফিশিয়া ডেসেরান্ট মোল্লিট অ্যানিম ইড এস্ট ল্যাবোরাম।"
+      details: "কোনো তথ্য যুক্ত করা হয়নি"
     },
     3: {
       img: "COURSE_IMAGE_3",
-      details: "এটি ইংরেজি কোর্সের ডেমো। এখানে গ্রামার, লিটারেচার, এবং কনভারসেশনের পাঠ অন্তর্ভুক্ত। এই কোর্সটি শিক্ষার্থীদের ইংরেজিতে দক্ষতা অর্জন করতে সাহায্য করে। আরও বিস্তারিত তথ্য: সপ্তাহে ৩টি ক্লাস, মোট ৮টি মডিউল, এবং অ্যাসাইনমেন্ট। এটি একটি দীর্ঘ টেক্সট যাতে স্ক্রল করা যায়: লোরেম ইপসাম ডলর সিট আমেট, কনসেকটেটুর অ্যাডিপিসিং এলিট। সেড ডো ইউসমোড টেম্পোর ইনসিডিডান্ট উট ল্যাবোরে এট ডলোরে ম্যাগনা অ্যালিকুয়া। উট এনিম অ্যাড মিনিম ভেনিয়াম, কুইস নস্ট্রুড এক্সারসিটেশন উল্লামকো ল্যাবোরিস নিসি উট অ্যালিকুইপ এক্স ইএ কমোডো কনসেকুয়াট। ডুইস অটে ইরুরে ডলর ইন রেপ্রেহেন্ডেরিট ইন ভলুপটেট ভেলিট এসে সিল্লুম ডলোরে ইউ ফুগিয়াট নুল্লা প্যারিয়াটুর। এক্সসেপ্টুর সিন্ট অককায়েকাট কুপিডাটাট নন প্রোইডেন্ট, সান্ট ইন কুলপা কুই অফিশিয়া ডেসেরান্ট মোল্লিট অ্যানিম ইড এস্ট ল্যাবোরাম।"
+      details: "কোনো তথ্য যুক্ত করা হয়নি"
     },
     4: {
       img: "COURSE_IMAGE_4",
-      details: "এটি কুরআন তিলাওয়াত কোর্সের ডেমো। এখানে তাজবীদ, মখরাজ, এবং রেকর্ডিংয়ের পাঠ অন্তর্ভুক্ত। এই কোর্সটি শিক্ষার্থীদের কুরআন পড়ায় দক্ষতা অর্জন করতে সাহায্য করে। আরও বিস্তারিত তথ্য: সপ্তাহে ২টি ক্লাস, মোট ১৫টি মডিউল, এবং প্র্যাকটিস। এটি একটি দীর্ঘ টেক্সট যাতে স্ক্রল করা যায়: লোরেম ইপসাম ডলর সিট আমেট, কনসেকটেটুর অ্যাডিপিসিং এলিট। সেড ডো ইউসমোড টেম্পোর ইনসিডিডান্ট উট ল্যাবোরে এট ডলোরে ম্যাগনা অ্যালিকুয়া। উট এনিম অ্যাড মিনিম ভেনিয়াম, কুইস নস্ট্রুড এক্সারসিটেশন উল্লামকো ল্যাবোরিস নিসি উট অ্যালিকুইপ এক্স ইএ কমোডো কনসেকুয়াট। ডুইস অটে ইরুরে ডলর ইন রেপ্রেহেন্ডেরিট ইন ভলুপটেট ভেলিট এসে সিল্লুম ডলোরে ইউ ফুগিয়াট নুল্লা প্যারিয়াটুর। এক্সসেপ্টুর সিন্ট অককায়েকাট কুপিডাটাট নন প্রোইডেন্ট, সান্ট ইন কুলপা কুই অফিশিয়া ডেসেরান্ট মোল্লিট অ্যানিম ইড এস্ট ল্যাবোরাম।"
+      details: "কোনো তথ্য যুক্ত করা হয়নি"
     }
   };
 
@@ -2772,12 +3184,33 @@ document.addEventListener('DOMContentLoaded', function() {
     const loginPage = $('#login-page');
     const mainPage = $('#main-page');
     const subjectPage = $('#subject-page');
+    const videoPlayerPage = $('#video-player-page');
     const warningModal = $('#warning-modal');
     const loadingModal = $('#loading-modal');
     const loadingOverlay = $('#loading-overlay');
     let allClasses = [];
     let groupedClassesCache = {};
     let mainScrollPosition = 0;
+    let subjectScrollPosition = 0;
+
+    // Video player tracking variables
+    let videoPlayer = null;
+    let videoTrackId = null;
+    let videoType = null;
+    let videoUrl = null;
+    let videoDuration = 0;
+    let videoWatchTime = 0;
+    let videoCheckInterval = null;
+    let videoIsYouTube = false;
+    let videoStartTime = 0;
+    let videoIsTracked = false;
+    let isPortraitMode = false;
+    let progressUpdateInterval = null;
+    let isDraggingProgress = false;
+
+    // Back button history state management
+    let currentPageState = 'default';
+    let historyStack = [];
 
     const availableSubjects = [
       "কুরআন মাজীদ",
@@ -2810,7 +3243,7 @@ document.addEventListener('DOMContentLoaded', function() {
       "ইক্সাম",
       "ক্লাসের লেকচার শীট",
       "পরীক্ষার রেজাল্ট শীট",
-      "সাজেশন্স" // Changed from 'অন্যান্য' to 'সাজেশন্স'
+      "সাজেশন্স"
     ];
 
     const LOGIN_EXPIRY_KEY = 'alim26_login_expiry';
@@ -3081,7 +3514,7 @@ document.addEventListener('DOMContentLoaded', function() {
           return acc;
         }, {});
 
-        const specialFolders = ["মিশন", "ক্লাসের লেকচার শীট", "পরীক্ষার রেজাল্ট শীট", "সাজেশন্স"]; // Changed from 'অন্যান্য' to 'সাজেশন্স'
+        const specialFolders = ["মিশন", "ক্লাসের লেকচার শীট", "পরীক্ষার রেজাল্ট শীট", "সাজেশন্স"];
 
         const normalizedRows = [];
         Object.keys(groupedBySubject).forEach(subject => {
@@ -3215,6 +3648,467 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
 
+    // Video Player Functions
+    function extractVideoId(url) {
+      const match = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/);
+      return match ? match[1] : '';
+    }
+
+    function openVideoPlayer(url, trackId, type) {
+      videoUrl = url;
+      videoTrackId = trackId;
+      videoType = type;
+      videoIsYouTube = url.includes('youtube.com') || url.includes('youtu.be');
+      
+      subjectScrollPosition = window.scrollY;
+      
+      if (videoIsYouTube) {
+        subjectPage.style.display = 'none';
+        videoPlayerPage.style.display = 'block';
+        
+        history.pushState({ page: 'video', url: url, trackId: trackId, type: type }, '');
+        currentPageState = 'video';
+        
+        window.scrollTo(0, 0);
+        
+        const videoId = extractVideoId(url);
+        if (videoId) {
+          initializeYouTubePlayer(videoId);
+        } else {
+          showNotification("ভিডিও লোড করতে সমস্যা হয়েছে", true);
+        }
+      } else {
+        trackAndOpenLink(url, trackId, type);
+      }
+    }
+
+    function initializeYouTubePlayer(videoId) {
+      if (typeof YT === 'undefined') {
+        const tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        
+        window.onYouTubeIframeAPIReady = function() {
+          createYouTubePlayer(videoId);
+        };
+      } else {
+        createYouTubePlayer(videoId);
+      }
+    }
+
+    function createYouTubePlayer(videoId) {
+      videoPlayer = new YT.Player('player', {
+        height: '100%',
+        width: '100%',
+        videoId: videoId,
+        playerVars: {
+          autoplay: 1,
+          controls: 0,
+          modestbranding: 1,
+          rel: 0,
+          iv_load_policy: 3,
+          disablekb: 1,
+          fs: 0,
+          playsinline: 1
+        },
+        events: {
+          onReady: onPlayerReady,
+          onStateChange: onPlayerStateChange,
+          onPlaybackQualityChange: onPlaybackQualityChange,
+          onPlaybackRateChange: onPlaybackRateChange,
+          onError: onPlayerError
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+      // Reset tracking variables
+      videoIsTracked = false;
+      videoStartTime = Date.now();
+      
+      const togglePlayBtn = document.getElementById('togglePlayBtn');
+      togglePlayBtn.addEventListener('click', () => {
+        if (videoPlayer.getPlayerState() === YT.PlayerState.PLAYING) {
+          videoPlayer.pauseVideo();
+          togglePlayBtn.textContent = 'Play';
+        } else {
+          videoPlayer.playVideo();
+          togglePlayBtn.textContent = 'Pause';
+        }
+      });
+
+      document.getElementById('stopBtn').addEventListener('click', () => {
+        videoPlayer.stopVideo();
+        togglePlayBtn.textContent = 'Play';
+      });
+      
+      document.getElementById('rewindBtn').addEventListener('click', () => {
+        const t = Math.max(0, videoPlayer.getCurrentTime() - 10); 
+        videoPlayer.seekTo(t, true);
+      });
+      
+      document.getElementById('forwardBtn').addEventListener('click', () => {
+        const t = Math.min(videoPlayer.getDuration() || 99999, videoPlayer.getCurrentTime() + 10); 
+        videoPlayer.seekTo(t, true);
+      });
+      
+      document.getElementById('muteBtn').addEventListener('click', () => {
+        if(videoPlayer.isMuted()) {
+          videoPlayer.unMute();
+          document.getElementById('muteBtn').textContent = 'Mute';
+        } else {
+          videoPlayer.mute();
+          document.getElementById('muteBtn').textContent = 'Unmute';
+        }
+      });
+
+      document.getElementById('portraitBtn').addEventListener('click', enterPortrait);
+
+      document.getElementById('youtubeBtn').addEventListener('click', () => {
+        window.open(videoUrl, '_blank');
+      });
+
+      document.getElementById('folderBtn').addEventListener('click', () => {
+        closeVideoPlayer();
+      });
+
+      const blocker = document.getElementById('blocker');
+      blocker.addEventListener('click', exitPortraitOnTap);
+
+      const progressContainer = document.getElementById('progress-container');
+      const progressBar = document.getElementById('progress-bar');
+      const progressThumb = document.getElementById('progress-thumb');
+      
+      progressContainer.addEventListener('click', (e) => {
+        if (isDraggingProgress) return;
+        const rect = progressContainer.getBoundingClientRect();
+        const pos = (e.clientX - rect.left) / progressContainer.offsetWidth;
+        const newTime = pos * videoPlayer.getDuration();
+        videoPlayer.seekTo(newTime, true);
+        updateProgressBar(pos * 100);
+      });
+      
+      progressThumb.addEventListener('mousedown', startDrag);
+      progressThumb.addEventListener('touchstart', startDrag);
+      
+      function startDrag(e) {
+        e.preventDefault();
+        isDraggingProgress = true;
+        
+        const moveHandler = (e) => {
+          if (!isDraggingProgress) return;
+          
+          const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+          const rect = progressContainer.getBoundingClientRect();
+          let pos = (clientX - rect.left) / progressContainer.offsetWidth;
+          pos = Math.max(0, Math.min(1, pos));
+          
+          updateProgressBar(pos * 100);
+        };
+        
+        const endHandler = () => {
+          isDraggingProgress = false;
+          const pos = parseFloat(progressBar.style.width) / 100;
+          const newTime = pos * videoPlayer.getDuration();
+          videoPlayer.seekTo(newTime, true);
+          
+          document.removeEventListener('mousemove', moveHandler);
+          document.removeEventListener('touchmove', moveHandler);
+          document.removeEventListener('mouseup', endHandler);
+          document.removeEventListener('touchend', endHandler);
+        };
+        
+        document.addEventListener('mousemove', moveHandler);
+        document.addEventListener('touchmove', moveHandler, { passive: false });
+        document.addEventListener('mouseup', endHandler);
+        document.addEventListener('touchend', endHandler);
+      }
+
+      videoDuration = videoPlayer.getDuration();
+      
+      // Start tracking watch time for 40% completion
+      videoCheckInterval = setInterval(updateVideoProgress, 1000);
+      
+      // Start updating progress bar
+      progressUpdateInterval = setInterval(updateProgressFromPlayer, 200);
+      
+      const loading = document.getElementById('loading');
+      loading.classList.add('hidden');
+    }
+
+    function updateProgressFromPlayer() {
+      if (videoPlayer && !isDraggingProgress) {
+        const currentTime = videoPlayer.getCurrentTime();
+        const duration = videoPlayer.getDuration();
+        
+        if (duration > 0) {
+          const progressPercent = (currentTime / duration) * 100;
+          updateProgressBar(progressPercent);
+        }
+      }
+    }
+
+    function updateProgressBar(percent) {
+      const progressBar = document.getElementById('progress-bar');
+      progressBar.style.width = percent + '%';
+    }
+
+    function updateVideoProgress() {
+      if (videoPlayer && videoPlayer.getPlayerState() === YT.PlayerState.PLAYING) {
+        const currentTime = videoPlayer.getCurrentTime();
+        const duration = videoPlayer.getDuration();
+        
+        if (duration > 0 && !videoIsTracked) {
+          const progressPercentage = (currentTime / duration) * 100;
+          
+          // Check if 40% of video has been watched
+          if (progressPercentage >= 40) {
+            trackVideoCompletion();
+          }
+        }
+      }
+    }
+
+    function trackVideoCompletion() {
+      if (!videoIsTracked && videoTrackId) {
+        videoIsTracked = true;
+        
+        // Clear the tracking interval
+        if (videoCheckInterval) {
+          clearInterval(videoCheckInterval);
+        }
+        
+        // Track the item as completed
+        trackItem(videoTrackId, videoType);
+        
+        console.log(`Video ${videoTrackId} marked as completed (40% watched)`);
+      }
+    }
+
+    function onPlayerStateChange(event) {
+      const togglePlayBtn = document.getElementById('togglePlayBtn');
+      const loading = document.getElementById('loading');
+      
+      if (event.data === YT.PlayerState.PLAYING) {
+        togglePlayBtn.textContent = 'Pause';
+        loading.classList.add('hidden');
+        
+        // Start tracking when video starts playing
+        if (!videoCheckInterval) {
+          videoCheckInterval = setInterval(updateVideoProgress, 1000);
+        }
+      } else if (event.data === YT.PlayerState.PAUSED) {
+        togglePlayBtn.textContent = 'Play';
+      } else if (event.data === YT.PlayerState.ENDED) {
+        togglePlayBtn.textContent = 'Play';
+        
+        // If video ends and wasn't already tracked, track it
+        if (!videoIsTracked && videoTrackId) {
+          trackVideoCompletion();
+        }
+      }
+      
+      // Update loading progress based on buffering
+      if (event.data === YT.PlayerState.BUFFERING) {
+        updateLoadingProgressBar();
+      }
+    }
+
+    function updateLoadingProgressBar() {
+      if (videoPlayer && videoPlayer.getVideoLoadedFraction) {
+        const loadedFraction = videoPlayer.getVideoLoadedFraction();
+        const loadingProgressBar = document.getElementById('loading-progress-bar');
+        if (loadingProgressBar) {
+          loadingProgressBar.style.width = (loadedFraction * 100) + '%';
+        }
+      }
+    }
+
+    function onPlaybackQualityChange(event) {
+      console.log('Playback quality changed to:', event.data);
+      updateLoadingProgressBar();
+    }
+
+    function onPlaybackRateChange(event) {
+      console.log('Playback rate changed to:', event.data);
+    }
+
+    function onPlayerError(event) {
+      console.error('YouTube Player Error:', event.data);
+      showNotification("ভিডিও লোড করতে সমস্যা হয়েছে", true);
+    }
+
+    function enterPortrait() {
+      const aspect = document.getElementById('aspect');
+      aspect.classList.add('portrait', 'fullscreen-portrait');
+      document.body.classList.add('fullscreen-locked');
+      isPortraitMode = true;
+      
+      setTimeout(() => {
+        window.scrollTo({
+          top: window.innerHeight / 2,
+          behavior: 'smooth'
+        });
+      }, 100);
+    }
+
+    function exitPortraitOnTap() {
+      if (isPortraitMode) {
+        exitPortrait();
+      }
+    }
+
+    function exitPortrait() {
+      const aspect = document.getElementById('aspect');
+      aspect.classList.remove('portrait', 'fullscreen-portrait');
+      document.body.classList.remove('fullscreen-locked');
+      isPortraitMode = false;
+      
+      setTimeout(() => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }, 100);
+    }
+
+    function closeVideoPlayer() {
+      // Clear tracking interval
+      if (videoCheckInterval) {
+        clearInterval(videoCheckInterval);
+        videoCheckInterval = null;
+      }
+      
+      // Clear progress update interval
+      if (progressUpdateInterval) {
+        clearInterval(progressUpdateInterval);
+        progressUpdateInterval = null;
+      }
+      
+      // Reset tracking variables
+      videoIsTracked = false;
+      videoWatchTime = 0;
+      
+      // Exit portrait mode if active
+      if (isPortraitMode) {
+        exitPortrait();
+      }
+      
+      // Stop video player
+      if (videoPlayer) {
+        videoPlayer.stopVideo();
+        videoPlayer.destroy();
+        videoPlayer = null;
+      }
+      
+      // Clear player element
+      const playerElement = document.getElementById('player');
+      if (playerElement) {
+        playerElement.innerHTML = '';
+      }
+      
+      // Return to subject page
+      history.pushState({ page: 'subject', subject: currentSubject }, '');
+      currentPageState = 'subject';
+      
+      videoPlayerPage.style.display = 'none';
+      subjectPage.style.display = 'block';
+      
+      // Restore scroll position
+      window.scrollTo(0, subjectScrollPosition);
+    }
+
+    // NEW FUNCTION: Track and open non-YouTube links
+    window.trackAndOpenLink = function(url, trackId, type) {
+      trackItem(trackId, type);
+      window.open(url, '_blank');
+    };
+
+    // Back button handling
+    function handleBackButton() {
+      if (currentPageState === 'video') {
+        if (isPortraitMode) {
+          exitPortrait();
+        } else {
+          closeVideoPlayer();
+        }
+      } else if (currentPageState === 'subject') {
+        returnToMainPage();
+      } else if (currentPageState === 'main') {
+        // Main page থেকে back করলে login page-এ যাবে
+        logout();
+      } else if (currentPageState === 'default') {
+        // Default page থেকে back করলে browser exit করবে
+        // Browser নিজেই handle করবে
+      }
+    }
+
+    // Enhanced back button functionality
+    function setupBackButtonNavigation() {
+      // Browser back/forward buttons handle
+      window.addEventListener('popstate', (event) => {
+        handleBackButton();
+      });
+
+      // Physical back button for mobile (Android)
+      document.addEventListener('backbutton', handleBackButton, false);
+      
+      // Keyboard back button (Esc key)
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          handleBackButton();
+          e.preventDefault();
+        }
+      });
+    }
+
+    // Update page state functions
+    function showSubjectPage(subject, fromTable = false) {
+      currentSubject = subject;
+      mainScrollPosition = window.scrollY;
+      
+      // Push state to history for back button navigation
+      history.pushState({ page: 'subject', subject: subject }, '');
+      currentPageState = 'subject';
+      
+      mainPage.style.display = 'none';
+      subjectPage.style.display = 'block';
+      $('#subject-title').innerHTML = `<i class="fas fa-book"></i> <span class="bangla-font">${subject}</span>`;
+      scrollToTop();
+
+      const classes = filterClassesByTimeRange('all');
+      const groupedClasses = groupClassesBySubject(classes);
+      const subjectClasses = groupedClasses[subject] || [];
+
+      const root = $('#classGrid');
+      renderCards(subjectClasses, root);
+
+      if (fromTable) {
+        const highlightedCard = $all('#classGrid .card').find(card => card.getAttribute('data-timestamp') === highlightedClassTimestamp);
+        if (highlightedCard) {
+          highlightedCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+
+      $('#search').value = '';
+    }
+
+    function returnToMainPage() {
+      // Push state to history
+      history.pushState({ page: 'main' }, '');
+      currentPageState = 'main';
+      
+      subjectPage.style.display = 'none';
+      mainPage.style.display = 'block';
+      $('#search-subjects').value = '';
+      const pills = $all('.subject-link');
+      pills.forEach(pill => {
+        pill.style.display = 'flex';
+      });
+      window.scrollTo(0, mainScrollPosition);
+    }
+
     function renderCards(rows, root) {
       if (!rows || rows.length === 0) {
         root.innerHTML = '<div class="empty-state"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><p class="bangla-font">কোন ক্লাস পাওয়া যায়নি</p></div>';
@@ -3225,7 +4119,7 @@ document.addEventListener('DOMContentLoaded', function() {
       rows.forEach(r => {
         if (!r) return;
 
-        const specialFolders = ["ক্লাসের লেকচার শীট", "পরীক্ষার রেজাল্ট শীট", "সাজেশন্স"]; // Changed from 'অন্যান্য' to 'সাজেশন্স'
+        const specialFolders = ["ক্লাসের লেকচার শীট", "পরীক্ষার রেজাল্ট শীট", "সাজেশন্স"];
         let buttonText;
         let isExpired = false;
 
@@ -3252,14 +4146,27 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         const idPrefix = r.type === 'mission' ? 'm' : r.type === 'exam' ? 'e' : 'c';
         const trackId = idPrefix + r.globalId;
-        const onclickAttr = `onclick="trackItem('${trackId}', '${r.type}')"`
+        
+        // Check if it's a YouTube link
+        const isYouTube = r.link && (r.link.includes('youtube.com') || r.link.includes('youtu.be'));
+        
+        // Set onclick attribute based on link type
+        let onclickAttr = '';
+        if (isYouTube) {
+          // YouTube videos open in custom video player with 40% tracking
+          onclickAttr = `onclick="openVideoPlayer('${r.link}', '${trackId}', '${r.type}')"`;
+        } else {
+          // Non-YouTube links open in new tab with immediate tracking
+          onclickAttr = `onclick="trackAndOpenLink('${r.link}', '${trackId}', '${r.type}')"`;
+        }
+        
         card.innerHTML = `
           <span class="card-badge bangla-font">ক্লাস ${r.displaySerial}</span>
           <div class="subject"><i class="fas fa-book"></i> <span class="bangla-font">${r.subject}</span></div>
           <div class="video-title bangla-font">${r.title}</div>
           <div class="time"><i class="fas fa-clock"></i> ${r.time} | <span class="bangla-font">${r.date}</span></div>
           ${r.subject === "ইক্সাম" && isExpired ? '<div class="exam-expiry-notice bangla-font"><i class="fas fa-exclamation-triangle"></i> পরীক্ষায় অংশগ্রহণ করার নির্দিষ্ট সময় শেষ হয়ে গেছে</div>' : ''}
-          <a class="btn" target="_blank" rel="noopener" href="${r.link}" ${onclickAttr}><i class="fas fa-play-circle"></i> <span class="bangla-font">${buttonText}</span></a>
+          <a class="btn" href="javascript:void(0)" ${onclickAttr}><i class="fas fa-play-circle"></i> <span class="bangla-font">${buttonText}</span></a>
         `;
         root.appendChild(card);
       });
@@ -3396,41 +4303,14 @@ document.addEventListener('DOMContentLoaded', function() {
       }, 100);
     }
 
-    function showSubjectPage(subject, fromTable = false) {
-      currentSubject = subject;
-      mainScrollPosition = window.scrollY;
-      history.pushState({ page: 'subject' }, '');
-      mainPage.style.display = 'none';
-      subjectPage.style.display = 'block';
-      $('#subject-title').innerHTML = `<i class="fas fa-book"></i> <span class="bangla-font">${subject}</span>`;
-      scrollToTop();
-
-      const classes = filterClassesByTimeRange('all');
-      const groupedClasses = groupClassesBySubject(classes);
-      const subjectClasses = groupedClasses[subject] || [];
-
-      const root = $('#classGrid');
-      renderCards(subjectClasses, root);
-
-      if (fromTable) {
-        const highlightedCard = $all('#classGrid .card').find(card => card.getAttribute('data-timestamp') === highlightedClassTimestamp);
-        if (highlightedCard) {
-          highlightedCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-      }
-
-      $('#search').value = '';
-    }
-
-    function returnToMainPage() {
-      subjectPage.style.display = 'none';
-      mainPage.style.display = 'block';
-      $('#search-subjects').value = '';
-      const pills = $all('.subject-link');
-      pills.forEach(pill => {
-        pill.style.display = 'flex';
-      });
-      window.scrollTo(0, mainScrollPosition);
+    // Initialize with default page state
+    function initializePageState() {
+      // Set initial state
+      history.replaceState({ page: 'default' }, '');
+      currentPageState = 'default';
+      
+      // Setup back button navigation
+      setupBackButtonNavigation();
     }
 
     function initializeEventListeners() {
@@ -3502,14 +4382,6 @@ document.addEventListener('DOMContentLoaded', function() {
         history.back();
       });
 
-      window.addEventListener('popstate', (event) => {
-        if (event.state && event.state.page === 'subject') {
-          showSubjectPage(currentSubject);
-        } else {
-          returnToMainPage();
-        }
-      });
-
       $('#refresh-data-btn').addEventListener('click', async () => {
         showLoadingOverlay();
         updateLoadingProgress(10);
@@ -3567,38 +4439,18 @@ document.addEventListener('DOMContentLoaded', function() {
       };
     }
 
-    // Tracking function
+    // Tracking function - UPDATED: No scroll condition for YouTube videos
     window.trackItem = function(id, type) {
       const studentData = getStudentData();
       let completed = studentData.completedItems;
       if (completed.includes(id)) {
-        return;
+        return; // Already completed
       }
 
-      if (type === 'class') {
-        let scrolled = false;
-        const scrollListener = () => { scrolled = true; };
-        window.addEventListener('scroll', scrollListener);
-
-        const minTime = 0;
-        const maxTime = 0;
-        const randomTime = Math.random() * (maxTime - minTime) + minTime;
-
-        setTimeout(() => {
-          window.removeEventListener('scroll', scrollListener);
-          if (!scrolled) {
-            completed.push(id);
-            saveStudentData(studentData.name, studentData.joinDate, new Date().toISOString(), new Date().toISOString(), completed);
-            showNotification(`${type} সম্পন্ন হয়েছে!`, false);
-          } else {
-            showNotification('পেজ স্ক্রল হয়েছে, সম্পন্ন মনে করা হয়নি।', true);
-          }
-        }, randomTime * 1000);
-      } else {
-        completed.push(id);
-        saveStudentData(studentData.name, studentData.joinDate, new Date().toISOString(), new Date().toISOString(), completed);
-        showNotification(`${type} সম্পন্ন হয়েছে!`, false);
-      }
+      // For all types (including YouTube videos with 40% watch time), complete immediately
+      completed.push(id);
+      saveStudentData(studentData.name, studentData.joinDate, new Date().toISOString(), new Date().toISOString(), completed);
+      showNotification(`${type} সম্পন্ন হয়েছে!`, false);
     };
 
     function getItemsFromAllClasses() {
@@ -3913,25 +4765,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+      // Initialize page state and back button system
+      initializePageState();
+      
       // Show default page first
       document.getElementById('default-page').style.display = 'block';
       loginPage.style.display = 'none';
       mainPage.style.display = 'none';
       subjectPage.style.display = 'none';
+      videoPlayerPage.style.display = 'none';
 
       initializeEventListeners();
       initDynamicPlaceholder();
     });
 
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzEX1EuBWpSMlZ9zbXs1lAVQkOTdeV779SsD6SF6RllQGMYxcHJu30p5BPzW7O-PAbysg/exec";
-
-    function showNotification(message, isError=false){
-      const notification = $('#notification');
-      notification.innerHTML = `<i class="${isError?'fas fa-exclamation-circle':'fas fa-check-circle'}"></i> <span class="bangla-font">${message}</span>`;
-      notification.className=`notification ${isError?'error':'success'}`;
-      notification.classList.add('show');
-      setTimeout(()=>notification.classList.remove('show'),3000);
-    }
 
     let storedName = localStorage.getItem('userName') || '';
 
