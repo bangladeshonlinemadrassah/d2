@@ -82,6 +82,50 @@
       border-bottom-right-radius: 12px;
     }
 
+    /* Animated BOM Logo with Image Background */
+    .animated-logo {
+      font-size: 55px;
+      font-weight: 1000;
+      text-transform: uppercase;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% 100%;
+      background-repeat: repeat-x;
+      background-position: 0 0;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: scroll 55s linear infinite;
+      margin: 5px 0;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+      letter-spacing: 4px;
+    }
+
+    .animated-logo {
+      background-image: 
+        url('https://images.unsplash.com/photo-1501973801540-537f08ccae7b?q=80&w=1600&auto=format&fit=crop'),
+        url('https://images.unsplash.com/photo-1501973801540-537f08ccae7b?q=80&w=1600&auto=format&fit=crop');
+    }
+
+    @keyframes scroll {
+      0% { background-position: 0 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .animated-logo {
+        font-size: 45px;
+        letter-spacing: 2px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .animated-logo {
+        font-size: 55px;
+        letter-spacing: 1px;
+      }
+    }
+
     #default-page header .logo h3 {
       font-family: "Russo One", sans-serif;
       font-size: 40px;
@@ -522,6 +566,7 @@
       line-height: 1.8;
     }
 
+    /* SLIDESHOW STYLES - UPDATED */
     .slideshow-container {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -533,21 +578,60 @@
       position: relative;
       overflow: hidden;
       font-size: 0.95rem;
-      max-height: 300px;
+      height: 350px; /* নির্দিষ্ট উচ্চতা */
       margin-bottom: 24px;
     }
 
     .slideshow-image {
       width: 100%;
-      height: auto;
-      display: none;
-      transition: opacity 0.5s ease-in-out;
-      cursor: pointer;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out, transform 8s ease-in-out;
+      transform: scale(1);
     }
 
     .slideshow-image.active {
-      display: block;
       opacity: 1;
+      transform: scale(1.05);
+    }
+
+    /* Slideshow navigation dots */
+    .slideshow-dots {
+      position: absolute;
+      bottom: 15px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      z-index: 10;
+    }
+
+    .slideshow-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .slideshow-dot.active {
+      background-color: var(--primary);
+      transform: scale(1.2);
+    }
+
+    /* Slideshow paused state */
+    .slideshow-container.paused .slideshow-image.active {
+      transform: scale(1) !important;
+    }
+
+    .slideshow-dot:hover {
+      background-color: rgba(255, 255, 255, 0.8);
     }
 
     .today-classes-table {
@@ -2607,6 +2691,455 @@
       font-weight: bold;
       display: block;
     }
+
+    /* Drive Player Page Styles */
+    #drive-player-page {
+      display: none;
+      background: #000;
+      color: #fff;
+      font-family: sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    #drive-player-page body, #drive-player-page html{
+      margin:0;
+      padding:0;
+      height:100%;
+      background:#000;
+      overflow:hidden;
+    }
+
+    #drive-player-page iframe{
+      width:100%;
+      height:100vh;
+      border:none;
+      pointer-events:none;
+      touch-action:pan-y pinch-zoom;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    #drive-player-page body {
+      overscroll-behavior:none;
+      touch-action:pan-y pinch-zoom;
+    }
+
+    #drive-player-page .loader{
+      position:fixed;top:0;left:0;width:100%;height:100%;
+      background:#000;color:#fff;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      z-index:5000;
+    }
+
+    #drive-player-page .spinner{font-size:60px;animation:spin 1.5s linear infinite}
+    @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+    #drive-player-page .top-block {
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:80px;
+      background:transparent;
+      z-index:9999;
+      pointer-events:auto;
+      touch-action:none;
+    }
+
+    /* FIXED BUTTON */
+    #drive-player-page #backBtn {
+      position: fixed;
+      top: 6px;
+      right: 12px;
+      background: linear-gradient(135deg, #ff4da6, #ff6bd5);
+      box-shadow: 0 0 12px rgba(255, 80, 150, 0.8);
+      padding: 8px 14px;
+      border-radius: 12px;
+      border:none;
+      color: #fff;
+      font-family: sans-serif;
+      z-index: 15000;
+      cursor: pointer;
+      text-align:center;
+      transition: 0.15s;
+      user-select:none;
+    }
+
+    #drive-player-page #backBtn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255, 80, 150, 1);
+    }
+
+    #drive-player-page #backBtn .small {
+      font-size: 10px;
+      opacity: 0.85;
+      line-height: 12px;
+    }
+
+    #drive-player-page #backBtn .big {
+      font-size: 15px;
+      font-weight: bold;
+      line-height: 15px;
+    }
+
+    /* New Styles for Reply System */
+    .reply-btn {
+      background: var(--gradient-secondary);
+      color: white;
+      border: none;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 8px;
+    }
+
+    .reply-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .submission-item {
+      position: relative;
+    }
+
+    .reply-indicator {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--secondary);
+      color: white;
+      font-size: 0.7rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    /* Reply Modal Styles */
+    .reply-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 10005; /* Increased to be above other modals */
+    }
+
+    .reply-modal-content {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 25px;
+      max-width: 600px;
+      width: 90%;
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow-y: auto;
+      max-height: 90vh;
+    }
+
+    .reply-modal-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-primary);
+    }
+
+    .reply-modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .reply-modal-close:hover {
+      color: var(--danger);
+    }
+
+    .token-box {
+      background: rgba(76, 176, 216, 0.1);
+      border: 1px solid var(--primary);
+      border-radius: 10px;
+      padding: 10px 15px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .token-label {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 5px;
+    }
+
+    .token-value {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .student-info {
+      background: var(--glass);
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+
+    .info-row {
+      display: flex;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+
+    .info-label {
+      font-weight: 600;
+      width: 120px;
+      color: var(--text-muted);
+    }
+
+    .info-value {
+      flex: 1;
+      color: var(--text);
+    }
+
+    .student-comment-box {
+      background: rgba(239, 118, 116, 0.1);
+      border: 1px solid var(--secondary);
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .reply-form textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+      background: var(--glass);
+      color: var(--text);
+      outline: none;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+      font-size: 0.9rem;
+      resize: vertical;
+      min-height: 120px;
+      margin-bottom: 15px;
+    }
+
+    .reply-form textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(76, 176, 216, 0.2);
+    }
+
+    /* Answer Modal Styles - UPDATED with higher z-index and better positioning */
+    .answer-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 10006; /* Higher z-index to ensure it's on top */
+    }
+
+    .answer-modal-content {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 30px;
+      max-width: 650px;
+      width: 90%;
+      backdrop-filter: blur(15px);
+      box-shadow: var(--shadow-xl);
+      position: relative;
+      overflow-y: auto;
+      max-height: 85vh;
+    }
+
+    .answer-modal-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-primary);
+    }
+
+    .answer-modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.8rem;
+      cursor: pointer;
+      transition: var(--transition);
+      z-index: 10007;
+    }
+
+    .answer-modal-close:hover {
+      color: var(--danger);
+    }
+
+    .answer-header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .answer-header h2 {
+      font-size: 1.8rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 10px;
+    }
+
+    .answer-box {
+      background: rgba(76, 176, 216, 0.1);
+      border: 1px solid var(--primary);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .question-box, .reply-box {
+      background: var(--glass);
+      border-radius: 10px;
+      padding: 18px;
+      margin-bottom: 18px;
+    }
+
+    .question-label, .reply-label {
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    .question-content, .reply-content {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    /* NEW: Answer modal name colors */
+    .answered-by-name {
+      color: #00FFFF; /* Cyan color for replier */
+      font-weight: 700;
+      text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    }
+
+    /* Updated "বুঝেছি" Button Styles */
+    .answer-understood-btn {
+      display: block;
+      margin: 25px auto 10px;
+      padding: 14px 40px;
+      border-radius: 12px;
+      border: none;
+      background: linear-gradient(135deg, #4CAF50, #2E7D32);
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: var(--shadow-md);
+    }
+
+    .answer-understood-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+      background: linear-gradient(135deg, #2E7D32, #1B5E20);
+    }
+
+    /* Updated success message with countdown */
+    .success-message {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(135deg, var(--secondary), #4CAF50);
+      color: white;
+      padding: 25px 40px;
+      border-radius: 12px;
+      z-index: 10003;
+      font-size: 1.1rem;
+      box-shadow: var(--shadow-xl);
+      text-align: center;
+      max-width: 500px;
+      width: 90%;
+    }
+
+    .success-message-countdown {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.8);
+      background: rgba(0,0,0,0.2);
+      padding: 4px 8px;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+
+    /* Token display in answer modal */
+    .token-display {
+      text-align: center;
+      margin: 15px 0;
+      padding: 12px;
+      background: rgba(76, 176, 216, 0.15);
+      border-radius: 10px;
+      border: 1px dashed var(--primary);
+    }
+
+    .token-display-label {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 5px;
+    }
+
+    .token-display-value {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 1px;
+    }
+
+    /* New Owner Name Modal Styles */
+    .owner-name-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 10008; /* Highest z-index */
+    }
   </style>
 </head>
 <body>
@@ -2614,7 +3147,7 @@
   <div id="default-page">
     <header>
       <div class="logo">
-        <h3>BOM</h3>
+        <h3 class="animated-logo">BOM</h3> <!-- পরিবর্তন -->
       </div>
     </header>
 
@@ -2785,18 +3318,29 @@
         </div>
       </nav>
     </header>
-    <div class="notice-bar bangla-font"><span><b>📢 বার্তা: প্রিয় শিক্ষার্থীরা, কমেন্টের রিপ্লাই সুবিধাটি বর্তমানে স্থগিত আছে। তবে আপনাদের প্রতিটি মতামত আমরা যত্নসহকারে পড়ছি এবং প্রয়োজনীয় পদক্ষেপ নিচ্ছি। আপনাদের মূল্যবান মতামত জানাতে থাকুন — আন্তরিক ধন্যবাদ সাথে থাকার জন্য!</b></span></div>
+    <div class="notice-bar bangla-font">
+      <span>
+        <b class="notice-color1">🌟 ALIM-26 "Final Premium Batch" এ আপনাকে স্বাগতম!</b>
+        <b class="notice-color2">💬 আপনার মূল্যবান মতামত জানাতে "কমেন্ট করুন" বাটনে ক্লিক করুন।</b>
+        <b class="notice-color3">📝 আমরা প্রতিটি কমেন্ট গুরুত্বের সাথে বিবেচনা করি।</b>
+        <b class="notice-color4">-- ধন্যবাদ সাথে থাকার জন্য!</b>
+      </span>
+    </div>
     <main class="container">
       <div class="hero fade-in">
         <h1 class="bangla-font">ALIM-26 "Final Premium Batch (Target GPA-5)"</h1>
         <p class="bangla-font">শিক্ষার যাত্রায় এক নতুন দিগন্ত। বাংলাদেশ অনলাইন মাদ্রাসা (BOM) এর প্রাইভেট ব্যাচের আলিম-২৬ শিক্ষার্থীদের জন্য প্রিমিয়াম লার্নিং এক্সপেরিয়েন্স</p>
       </div>
-      <!-- New Slideshow Box -->
-      <div class="slideshow-container fade-in">
-        <img class="slideshow-image" src="https://example.com.image1.jpg" alt="Image 1">
-        <img class="slideshow-image" src="https://example.com/image2.jpg" alt="Image 2">
-        <img class="slideshow-image" src="https://example.com/image3.jpg" alt="Image 3">
-        <img class="slideshow-image" src="https://example.com/image4.jpg" alt="Image 4">
+      <!-- New Slideshow Box - UPDATED -->
+      <div class="slideshow-container fade-in" id="slideshowContainer">
+        <img class="slideshow-image active" src="https://i.imgur.com/RldTGhI.jpeg" alt="Image 1">
+        <img class="slideshow-image" src="https://i.imgur.com/dO8AshB.jpeg" alt="Image 2">
+        <img class="slideshow-image" src="https://i.imgur.com/G9Nfs4T.png" alt="Image 3">
+        <div class="slideshow-dots">
+          <div class="slideshow-dot active" data-index="0"></div>
+          <div class="slideshow-dot" data-index="1"></div>
+          <div class="slideshow-dot" data-index="2"></div>
+        </div>
       </div>
       <!-- Attractive Clock with Date -->
       <div class="clock-container fade-in stat-card">
@@ -2984,6 +3528,27 @@
     </div>
   </div>
 
+  <!-- Drive Player Page -->
+  <div id="drive-player-page" style="display: none;">
+    <!-- Loader -->
+    <div class="loader">
+      <div class="spinner">⟳</div>
+      <p id="drive-loading-text">ফাইল লোড হচ্ছে...<br>কিছুক্ষণ অপেক্ষা করুন এবং ইন্টারনেট স্পিড ঠিক রাখুন!</p>
+    </div>
+
+    <!-- Google Drive Viewer -->
+    <iframe id="viewer"></iframe>
+
+    <!-- ক্লিক ব্লক এরিয়া -->
+    <div class="top-block"></div>
+
+    <!-- স্থির বাটন -->
+    <button id="backBtn">
+      <div class="small">Back to</div>
+      <div class="big">Folder Page</div>
+    </button>
+  </div>
+
   <div id="warning-modal" class="warning-modal">
     <div class="modal-content">
       <div class="modal-header">
@@ -3080,7 +3645,115 @@
     </div>
   </div>
 
-  <div class="success-message" id="successMessage">ফর্ম সফলভাবে জমা হয়েছে!</div>
+  <!-- UPDATED Answer Modal (for students) - Now with "বুঝেছি" button -->
+  <div class="answer-modal" id="answerModal">
+    <div class="answer-modal-content">
+      <button class="answer-modal-close" onclick="hideAnswerModal()">×</button>
+      <div class="answer-header">
+        <h2 class="bangla-font">আপনার মন্তব্যের উত্তর</h2>
+        <p class="bangla-font" id="answer-token-info"></p>
+      </div>
+      
+      <div class="token-display">
+        <div class="token-display-label bangla-font">আপনার টোকেন নম্বর</div>
+        <div class="token-display-value" id="answer-token-value"></div>
+      </div>
+      
+      <div class="answer-box">
+        <div class="question-box">
+          <div class="question-label bangla-font">আপনার প্রশ্ন/মতামত:</div>
+          <div class="question-content bangla-font" id="answer-question"></div>
+        </div>
+        
+        <div class="reply-box">
+          <div class="reply-label bangla-font">উত্তর:</div>
+          <div class="reply-content bangla-font" id="answer-reply"></div>
+        </div>
+        
+        <div class="answered-by">
+          <span class="bangla-font" style="color: var(--text-muted);">উত্তর দাতা: </span>
+          <span class="answered-by-name bangla-font" id="answer-answered-by"></span>
+        </div>
+      </div>
+      
+      <!-- New "বুঝেছি" Button -->
+      <button class="answer-understood-btn bangla-font" id="answer-understood-btn" onclick="removeTokenAndClose()">
+        <i class="fas fa-check-circle"></i> বুঝেছি!
+      </button>
+      
+      <div class="answered-by">
+        <small class="bangla-font" style="color: var(--text-muted);">
+          "রিপ্লাই পড়া হয়ে গেলে 'বুঝেছি' বাটনে ক্লিক করুন। এই বাটনে ক্লিক করলে এই উত্তর আর দেখাবে না "
+        </small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reply Modal (for admin/editor) -->
+  <div class="reply-modal" id="replyModal">
+    <div class="reply-modal-content">
+      <button class="reply-modal-close" onclick="hideReplyModal()">×</button>
+      <div class="modal-intro">
+        <h2 class="bangla-font">উত্তর দিন</h2>
+        <p class="bangla-font">শিক্ষার্থীর প্রশ্নের উত্তর প্রদান করুন</p>
+      </div>
+      
+      <div class="token-box">
+        <div class="token-label bangla-font">টোকেন নম্বর</div>
+        <div class="token-value" id="reply-token-display"></div>
+      </div>
+      
+      <div class="student-info">
+        <div class="info-row">
+          <div class="info-label bangla-font">শিক্ষার্থীর নাম:</div>
+          <div class="info-value" id="reply-student-name"></div>
+        </div>
+        <div class="info-row">
+          <div class="info-label bangla-font">ব্যাচ:</div>
+          <div class="info-value" id="reply-student-batch"></div>
+        </div>
+      </div>
+      
+      <div class="student-comment-box">
+        <div class="info-label bangla-font">শিক্ষার্থীর মন্তব্য:</div>
+        <div class="info-value" id="reply-student-comment"></div>
+      </div>
+      
+      <form class="reply-form" id="replyForm" onsubmit="submitReply(event)">
+        <label class="bangla-font" for="reply-message">উত্তর লিখুন</label>
+        <textarea name="replyMessage" id="reply-message" placeholder="আপনার উত্তর এখানে লিখুন" required class="bangla-font"></textarea>
+        <button type="submit" class="submit-button bangla-font" id="replySubmitBtn">উত্তর পাঠান <span class="spinner"></span></button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Owner Name Modal (for owners) -->
+  <div class="owner-name-modal" id="ownerNameModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="hideOwnerNameModal()">×</button>
+      <div class="modal-intro">
+        <h2 class="bangla-font">নাম সেট করুন</h2>
+        <p class="bangla-font">আপনার নাম লিখুন। সঠিক নাম ও সঠিক বানান দেখে সেভ করুন কারন আপনি একবারিই সুযোগ পাবেন। এটি সেভ হয়ে যাবে এবং পরবর্তীতে উত্তর দাতা হিসেবে দেখানো হবে।</p>
+        <div class="warning-message bangla-font">
+          দয়া করে আপনার পূর্ণ নাম ব্যবহার করুন, যাতে সঠিকভাবে দেখানো যায়।
+        </div>
+      </div>
+      <div class="form-section">
+        <form id="ownerNameForm" onsubmit="saveOwnerName(event)">
+          <label class="bangla-font" for="ownerName">নাম</label>
+          <input type="text" id="ownerName" placeholder="আপনার পূর্ণ নাম লিখুন" required class="bangla-font">
+          <button type="submit" class="submit-button bangla-font">সেভ করুন</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- UPDATED Success Message with Countdown -->
+  <div class="success-message" id="successMessage">
+    <div class="success-message-countdown" id="successCountdown">10s</div>
+    <div id="successMessageContent"></div>
+  </div>
+
   <div id="notification" class="notification"></div>
 
   <script>
@@ -3106,8 +3779,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // Course Details Data (Demo)
   const courseDetails = {
     1: {
-      img: "COURSE_IMAGE_1",
-      details: "কোনো তথ্য যুক্ত করা হয়নি"
+      img: "https://i.imgur.com/N72gn3k.jpeg",
+      details: "বাংলাদেশ অনলাইন মাদ্রাসার আলিম–২৭ ব্যাচের জন্য প্রস্তুত করা Top Achievers – Ignition Batch হলো একটি সম্পূর্ণ পরীক্ষাভিত্তিক ও সুসংগঠিত কোর্স, যেখানে রয়েছে ১৫০+ ইন্টার‌্যাকটিভ লাইভ ক্লাস, ৩০+ মডেল টেস্ট, ওয়ান-টু-ওয়ান মেন্টরশিপ, অ্যাডভান্স টিচার্স প্যানেলের গাইডলাইন, ভিডিও লাইব্রেরি, প্রিমিয়াম লেকচার স্লাইডস ও দৈনিক স্টাডি প্ল্যানসহ সবকিছু এক জায়গায় সাজানো। প্রথম ৩০০ জন শিক্ষার্থী পাচ্ছেন 'BOM জিম সিক্রেট আল্টিমেট বুক' সম্পূর্ণ ফ্রি, আর মাত্র ৯৯৯ টাকায় এই পুরো কোর্সে অ্যাক্সেস পাওয়া যাবে। একজন শিক্ষার্থী হিসেবে আপনার নিয়মিত অগ্রগতি, পরীক্ষার প্রস্তুতি এবং প্রতিটি বিষয়ে গভীর ধারণা গড়ে তোলার জন্য এটি একটি পারফেক্ট অল-ইন-ওয়ান সল্যুশন। তাই শুধু আপনি নন—আপনার বন্ধু, ক্লাসমেট এবং ব্যাচমেটদেরও এই কোর্সে যুক্ত করতে উৎসাহ দিন, কারণ একসাথে পড়লে শেখা সহজ হয়, প্রতিযোগিতা বাড়ে এবং সবারই রেজাল্ট আরও ভালো হয়"
     },
     2: {
       img: "COURSE_IMAGE_2",
@@ -3123,7 +3796,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   };
 
-  // Modal Functionality
+  // Modal Functionality for default page
   const modal = document.getElementById("courseModal");
   const modalImg = document.getElementById("modalImage");
   const modalDetails = document.getElementById("modalDetails");
@@ -3136,19 +3809,19 @@ document.addEventListener('DOMContentLoaded', function() {
       modalImg.src = course.img;
       modalDetails.innerHTML = course.details;
       modal.style.display = "block";
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = "hidden"; // Prevent background scrolling
     });
   });
 
   closeBtn.addEventListener("click", function() {
     modal.style.display = "none";
-    document.body.style.overflow = "";
+    document.body.style.overflow = ""; // Restore scrolling
   });
 
   window.addEventListener("click", function(event) {
     if (event.target == modal) {
       modal.style.display = "none";
-      document.body.style.overflow = "";
+      document.body.style.overflow = ""; // Restore scrolling
     }
   });
 
@@ -3208,6 +3881,14 @@ document.addEventListener('DOMContentLoaded', function() {
     let progressUpdateInterval = null;
     let isDraggingProgress = false;
 
+    // Drive player variables
+    let driveUrl = null;
+    let driveTrackId = null;
+    let driveType = null;
+    let driveLoadingTimeout = null;
+    let driveScrollPosition = 0;
+    const drivePlayerPage = $('#drive-player-page');
+
     // Back button history state management
     let currentPageState = 'default';
     let historyStack = [];
@@ -3263,6 +3944,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Slideshow variables
     let slideshowInterval;
     let isSlideshowPaused = false;
+
+    // Comment and Reply System Variables
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwt0L25Lvl6mEiUcr9Pv-5lLR289sQOvuIOsOc5g1jSy-oHT_LDAgmwBzQglB32aFeT1g/exec";
+    const TOKEN_STORAGE_KEY = 'alim26_comment_tokens';
+    const OWNER_NAME_KEY = 'alim26_owner_name';
 
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -3333,6 +4019,23 @@ document.addEventListener('DOMContentLoaded', function() {
       }, 3000);
     }
 
+    function setButtonVisibility() {
+      const role = getUserRole();
+      const formButton = $('#form-button');
+      const submissionsButton = $('#submissions-button');
+      
+      // Reset both first
+      formButton.style.display = 'none';
+      submissionsButton.style.display = 'none';
+      
+      if (role === 'user' || role === 'editor') {
+        formButton.style.display = 'inline-flex';
+      } 
+      if (role === 'owner' || role === 'editor') {
+        submissionsButton.style.display = 'inline-flex';
+      }
+    }
+
     function checkPassword() {
       const password = $('#password').value.trim();
       const errorElement = $('#error-message');
@@ -3345,6 +4048,7 @@ document.addEventListener('DOMContentLoaded', function() {
         showLoadingOverlay();
         loadInitialData();
         showDashboardButton();
+        setButtonVisibility(); // এই লাইন যোগ করুন
         scrollToTop();
       } else if (password === 'OWNERALIM26') {
         setLoginExpiry('owner');
@@ -3353,6 +4057,7 @@ document.addEventListener('DOMContentLoaded', function() {
         showWarningModal();
         showLoadingOverlay();
         loadInitialData();
+        setButtonVisibility(); // এই লাইন যোগ করুন
         scrollToTop();
       } else if (password === 'EDITOR@BOM-435') {
         setLoginExpiry('editor');
@@ -3361,6 +4066,7 @@ document.addEventListener('DOMContentLoaded', function() {
         showWarningModal();
         showLoadingOverlay();
         loadInitialData();
+        setButtonVisibility(); // এই লাইন যোগ করুন
         scrollToTop();
       } else {
         errorElement.style.display = 'block';
@@ -3648,36 +4354,143 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
 
+    // UPDATED Slideshow functionality with pause/resume on click
+    function initSlideshow() {
+      const slideshowImages = document.querySelectorAll('.slideshow-image');
+      const slideshowDots = document.querySelectorAll('.slideshow-dot');
+      const slideshowContainer = document.getElementById('slideshowContainer');
+      let currentIndex = 0;
+      let slideshowInterval;
+      let isPlaying = true;
+      
+      function showNextImage() {
+        slideshowImages.forEach(img => img.classList.remove('active'));
+        slideshowDots.forEach(dot => dot.classList.remove('active'));
+        
+        currentIndex = (currentIndex + 1) % slideshowImages.length;
+        
+        slideshowImages[currentIndex].classList.add('active');
+        slideshowDots[currentIndex].classList.add('active');
+      }
+      
+      function showImage(index) {
+        slideshowImages.forEach(img => img.classList.remove('active'));
+        slideshowDots.forEach(dot => dot.classList.remove('active'));
+        
+        currentIndex = index;
+        
+        slideshowImages[currentIndex].classList.add('active');
+        slideshowDots[currentIndex].classList.add('active');
+        
+        restartSlideshow();
+      }
+      
+      function startSlideshow() {
+        if (slideshowInterval) clearInterval(slideshowInterval);
+        slideshowInterval = setInterval(showNextImage, 4000);
+        isPlaying = true;
+        slideshowContainer.classList.remove('paused');
+      }
+      
+      function pauseSlideshow() {
+        if (slideshowInterval) {
+          clearInterval(slideshowInterval);
+          slideshowInterval = null;
+        }
+        isPlaying = false;
+        slideshowContainer.classList.add('paused');
+      }
+      
+      function toggleSlideshow() {
+        if (isPlaying) {
+          pauseSlideshow();
+        } else {
+          startSlideshow();
+        }
+      }
+      
+      function restartSlideshow() {
+        if (isPlaying) {
+          startSlideshow();
+        }
+      }
+      
+      // Add click event to dots
+      slideshowDots.forEach((dot, index) => {
+        dot.addEventListener('click', (e) => {
+          e.stopPropagation();
+          showImage(index);
+        });
+      });
+      
+      // Add click event to images for pause/resume
+      slideshowImages.forEach(img => {
+        img.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleSlideshow();
+        });
+      });
+      
+      // Add click event to entire slideshow container
+      slideshowContainer.addEventListener('click', () => {
+        toggleSlideshow();
+      });
+      
+      // Start slideshow
+      startSlideshow();
+    }
+
     // Video Player Functions
     function extractVideoId(url) {
       const match = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/);
       return match ? match[1] : '';
     }
 
+    // Video Player Functions - ফিক্সড ব্যাক বাটন
     function openVideoPlayer(url, trackId, type) {
       videoUrl = url;
       videoTrackId = trackId;
       videoType = type;
       videoIsYouTube = url.includes('youtube.com') || url.includes('youtu.be');
       
+      // Save current scroll position
       subjectScrollPosition = window.scrollY;
       
       if (videoIsYouTube) {
+        // Show video player page for YouTube videos
         subjectPage.style.display = 'none';
         videoPlayerPage.style.display = 'block';
         
+        // Set up back button immediately - FIX FOR ISSUE 1
+        document.getElementById('folderBtn').addEventListener('click', () => {
+          // Return to subject page and reset video player
+          closeVideoPlayer();
+        });
+        
+        // Push state to history for back button navigation
         history.pushState({ page: 'video', url: url, trackId: trackId, type: type }, '');
         currentPageState = 'video';
         
+        // Always start from top when opening video player
         window.scrollTo(0, 0);
         
+        // Initialize YouTube player
         const videoId = extractVideoId(url);
         if (videoId) {
           initializeYouTubePlayer(videoId);
+          
+          // Set timeout for loading message
+          videoLoadingTimeout = setTimeout(() => {
+            const loadingText = document.getElementById('loading-text');
+            if (loadingText) {
+              loadingText.innerHTML = "সম্ভবত নেটওয়ার্ক জনিত সমস্যা হচ্ছে!<br>দয়া করে আরো কিছুক্ষণ অপেক্ষা করুন অথবা পুনরায় চেষ্টা করুন..";
+            }
+          }, 20000); // 20 seconds
         } else {
           showNotification("ভিডিও লোড করতে সমস্যা হয়েছে", true);
         }
       } else {
+        // For non-YouTube links, track immediately and open in new tab
         trackAndOpenLink(url, trackId, type);
       }
     }
@@ -3767,10 +4580,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
       document.getElementById('youtubeBtn').addEventListener('click', () => {
         window.open(videoUrl, '_blank');
-      });
-
-      document.getElementById('folderBtn').addEventListener('click', () => {
-        closeVideoPlayer();
       });
 
       const blocker = document.getElementById('blocker');
@@ -4025,24 +4834,112 @@ document.addEventListener('DOMContentLoaded', function() {
       window.open(url, '_blank');
     };
 
+    // Drive Player Functions
+    function extractDriveId(url) {
+      try {
+        let u = new URL(url);
+        return u.searchParams.get("id") || url.match(/\/d\/(.+?)\//)?.[1];
+      } catch(e) { 
+        return null; 
+      }
+    }
+
+    function openDrivePlayer(url, trackId, type) {
+      driveUrl = url;
+      driveTrackId = trackId;
+      driveType = type;
+      
+      // Save current scroll position
+      driveScrollPosition = window.scrollY;
+      
+      // Show drive player page
+      subjectPage.style.display = 'none';
+      drivePlayerPage.style.display = 'block';
+      
+      // Push state to history for back button navigation
+      history.pushState({ page: 'drive', url: url, trackId: trackId, type: type }, '');
+      currentPageState = 'drive';
+      
+      // Always start from top when opening drive player
+      window.scrollTo(0, 0);
+      
+      // Initialize drive player
+      const driveId = extractDriveId(url);
+      if (driveId) {
+        initializeDrivePlayer(driveId);
+      } else {
+        showNotification("ডকুমেন্ট লোড করতে সমস্যা হয়েছে", true);
+      }
+    }
+
+    function initializeDrivePlayer(driveId) {
+      const viewer = document.getElementById('viewer');
+      viewer.src = "https://drive.google.com/file/d/" + driveId + "/preview";
+
+      // Set up back button
+      const backBtn = document.getElementById('backBtn');
+      backBtn.onclick = function() {
+        closeDrivePlayer();
+      };
+
+      // Set up loading timeout
+      driveLoadingTimeout = setTimeout(() => {
+        const loader = document.getElementById('drive-loading-text');
+        if (loader) {
+          loader.innerHTML = "সম্ভবত নেটওয়ার্ক জনিত সমস্যা হচ্ছে! দয়া করে অপেক্ষা করুন অথবা পুনরায় চেষ্টা করুন..";
+        }
+      }, 20000); // 20 seconds
+
+      // When iframe loads, hide loader
+      viewer.onload = () => {
+        clearTimeout(driveLoadingTimeout);
+        document.querySelector('#drive-player-page .loader').style.display = "none";
+        trackItem(driveTrackId, driveType);
+      };
+
+      // Track immediately for drive documents
+      trackItem(driveTrackId, driveType);
+    }
+
+    function closeDrivePlayer() {
+      // Clear loading timeout
+      if (driveLoadingTimeout) {
+        clearTimeout(driveLoadingTimeout);
+        driveLoadingTimeout = null;
+      }
+      
+      // Return to subject page
+      drivePlayerPage.style.display = 'none';
+      subjectPage.style.display = 'block';
+      
+      // Restore scroll position
+      window.scrollTo(0, driveScrollPosition);
+      currentPageState = 'subject';
+    }
+
     // Back button handling
     function handleBackButton() {
       if (currentPageState === 'video') {
         if (isPortraitMode) {
           exitPortrait();
         } else {
-          closeVideoPlayer();
+          document.getElementById('folderBtn').click();
         }
+      } else if (currentPageState === 'drive') {
+        document.getElementById('backBtn').click();
       } else if (currentPageState === 'subject') {
-        returnToMainPage();
+        document.getElementById('back-to-main').click();
       } else if (currentPageState === 'main') {
-        // Main page থেকে back করলে login page-এ যাবে
-        logout();
+        goToDefaultPage();
       } else if (currentPageState === 'default') {
-        // Default page থেকে back করলে browser exit করবে
-        // Browser নিজেই handle করবে
+        // Let the browser handle exit (do nothing)
       }
     }
+
+    // Browser back button handle
+    window.addEventListener('popstate', (event) => {
+      handleBackButton();
+    });
 
     // Enhanced back button functionality
     function setupBackButtonNavigation() {
@@ -4147,16 +5044,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const idPrefix = r.type === 'mission' ? 'm' : r.type === 'exam' ? 'e' : 'c';
         const trackId = idPrefix + r.globalId;
         
-        // Check if it's a YouTube link
-        const isYouTube = r.link && (r.link.includes('youtube.com') || r.link.includes('youtu.be'));
+        // Check if it's a YouTube link or Drive link
+        const isYouTube = r.link && r.link.includes('youtube.com') || r.link && r.link.includes('youtu.be');
+        const isDrive = r.link && r.link.includes('drive.google.com');
         
         // Set onclick attribute based on link type
         let onclickAttr = '';
         if (isYouTube) {
-          // YouTube videos open in custom video player with 40% tracking
           onclickAttr = `onclick="openVideoPlayer('${r.link}', '${trackId}', '${r.type}')"`;
+        } else if (isDrive) {
+          onclickAttr = `onclick="openDrivePlayer('${r.link}', '${trackId}', '${r.type}')"`;
         } else {
-          // Non-YouTube links open in new tab with immediate tracking
+          // For other links, track and open in new tab
           onclickAttr = `onclick="trackAndOpenLink('${r.link}', '${trackId}', '${r.type}')"`;
         }
         
@@ -4234,48 +5133,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         container.appendChild(item);
       });
-    }
-
-    // Slideshow functionality
-    function initSlideshow() {
-      const images = [
-        'https://example.com/image1.jpg',
-        'https://example.com/image2.jpg',
-        'https://example.com/image3.jpg',
-        'https://example.com/image4.jpg'
-      ];
-      
-      const slideshowImages = document.querySelectorAll('.slideshow-image');
-      let currentIndex = 0;
-      
-      function showNextImage() {
-        slideshowImages.forEach((img, index) => {
-          img.classList.remove('active');
-          if (index === currentIndex) {
-            img.classList.add('active');
-          }
-        });
-        currentIndex = (currentIndex + 1) % images.length;
-      }
-      
-      // Add click event to pause slideshow
-      slideshowImages.forEach(img => {
-        img.addEventListener('click', function() {
-          if (!isSlideshowPaused) {
-            clearInterval(slideshowInterval);
-            isSlideshowPaused = true;
-          } else {
-            slideshowInterval = setInterval(showNextImage, 4000);
-            isSlideshowPaused = false;
-          }
-        });
-      });
-      
-      // Initial show
-      showNextImage();
-      
-      // Change every 4 seconds
-      slideshowInterval = setInterval(showNextImage, 4000);
     }
 
     async function loadInitialData() {
@@ -4774,14 +5631,50 @@ document.addEventListener('DOMContentLoaded', function() {
       mainPage.style.display = 'none';
       subjectPage.style.display = 'none';
       videoPlayerPage.style.display = 'none';
+      drivePlayerPage.style.display = 'none';
 
       initializeEventListeners();
       initDynamicPlaceholder();
     });
 
-    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzEX1EuBWpSMlZ9zbXs1lAVQkOTdeV779SsD6SF6RllQGMYxcHJu30p5BPzW7O-PAbysg/exec";
-
+    // Comment and Reply System Functions
     let storedName = localStorage.getItem('userName') || '';
+
+    // টোকেন জেনারেশন ফাংশন
+    function generateToken() {
+      const now = new Date();
+      const day = now.getDate();
+      const month = String(now.getMonth() + 1).padStart(2, '0');
+      const year = now.getFullYear();
+      const hour = String(now.getHours()).padStart(2, '0');
+      const minute = String(now.getMinutes()).padStart(2, '0');
+      const second = String(now.getSeconds()).padStart(2, '0');
+      
+      return day.toString() + month + year + hour + minute + second;
+    }
+
+    // Function to save token to local storage
+    function saveToken(token) {
+      let tokens = JSON.parse(localStorage.getItem(TOKEN_STORAGE_KEY)) || [];
+      const tokenStr = token.toString();
+      if (!tokens.includes(tokenStr)) {
+        tokens.push(tokenStr);
+        localStorage.setItem(TOKEN_STORAGE_KEY, JSON.stringify(tokens));
+      }
+      return token;
+    }
+
+    // Function to remove token from local storage
+    function removeToken(token) {
+      let tokens = JSON.parse(localStorage.getItem(TOKEN_STORAGE_KEY)) || [];
+      tokens = tokens.filter(t => t !== token.toString());
+      localStorage.setItem(TOKEN_STORAGE_KEY, JSON.stringify(tokens));
+    }
+
+    // Function to get all tokens from local storage
+    function getTokens() {
+      return JSON.parse(localStorage.getItem(TOKEN_STORAGE_KEY)) || [];
+    }
 
     function showNameModal(){ $('#nameModal').style.display='flex'; }
     function hideNameModal(){ $('#nameModal').style.display='none'; }
@@ -4815,6 +5708,90 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function hideForm(){ $('#formModal').style.display='none'; }
 
+    // UPDATED: Modified submitForm function to include token
+    function submitForm(event) {
+      event.preventDefault();
+      const submitBtn = $('#submitBtn');
+      submitBtn.classList.add('loading');
+      submitBtn.disabled = true;
+      
+      const form = $('#myForm');
+      const token = generateToken();
+      
+      const data = {
+        name: form.name.value.trim(),
+        batch: form.batch.value,
+        message: form.message.value.trim(),
+        token: token
+      };
+
+      fetch(WEB_APP_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => {
+        submitBtn.classList.remove('loading');
+        submitBtn.disabled = false;
+        if (response.ok || response.type === 'opaque') {
+          // Save token to local storage
+          saveToken(token);
+          
+          // Show success message with token and countdown
+          showSuccessMessageWithToken(token);
+          form.reset(); 
+          hideForm();
+          
+          // Reload submissions to show new comment
+          setTimeout(() => {
+            loadSubmissions();
+          }, 1000);
+        } else {
+          showNotification("ডেটা জমা হয়নি! আবার চেষ্টা করুন।", true);
+        }
+      })
+      .catch((error) => {
+        console.error('Submission error:', error);
+        submitBtn.classList.remove('loading');
+        submitBtn.disabled = false;
+        showNotification("ডেটা জমা হয়নি! আবার চেষ্টা করুন।", true);
+      });
+    }
+
+    // UPDATED: Function to show success message with token and countdown
+    function showSuccessMessageWithToken(token) {
+      const successMessage = $('#successMessage');
+      const successMessageContent = $('#successMessageContent');
+      let timeLeft = 10;
+      
+      successMessageContent.innerHTML = `
+        ফর্ম সফলভাবে জমা হয়েছে!<br>
+        আপনার টোকেন নম্বর: <strong>${token}</strong><br>
+        <small>আপনার মূল্যবান মতামতের জন্য ধন্যবাদ। যথাযথ মনে হলে আমরা যত দ্রুত সম্ভব ব্যবস্থা নেব এবং উত্তর প্রদান করব।</small>
+      `;
+      
+      successMessage.style.display = 'block';
+      successMessage.style.zIndex = '10003';
+      
+      // Update countdown every second
+      const countdownElement = $('#successCountdown');
+      const countdownInterval = setInterval(() => {
+        timeLeft--;
+        countdownElement.textContent = timeLeft + 's';
+        
+        if (timeLeft <= 0) {
+          clearInterval(countdownInterval);
+          successMessage.style.display = 'none';
+        }
+      }, 1000);
+      
+      // Also show notification
+      showNotification(`কমেন্ট জমা হয়েছে! টোকেন: ${token}`, false);
+    }
+
     function showSubmissions(){ 
       $('#submissionsModal').style.display='flex'; 
       $('#submissions-list').innerHTML = '<div style="text-align:center;padding:40px;color:var(--text-muted)" class="bangla-font">লোড হচ্ছে...</div>';
@@ -4823,56 +5800,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function hideSubmissions(){ $('#submissionsModal').style.display='none'; }
 
-    function submitForm(event){
-      event.preventDefault();
-      const submitBtn = $('#submitBtn');
-      submitBtn.classList.add('loading');
-      submitBtn.disabled = true;
-      const form = $('#myForm');
-      const data = {
-        name: form.name.value.trim(),
-        batch: form.batch.value,
-        message: form.message.value.trim()
-      };
-
-      fetch(WEB_APP_URL,{
-        method:'POST',
-        body:JSON.stringify(data)
-      })
-      .then(res=>res.text())
-      .then(txt=>{
-        submitBtn.classList.remove('loading');
-        submitBtn.disabled = false;
-        if(txt.startsWith("Success")){
-          form.reset(); hideForm(); showSuccessMessage();
-        }else {
-          showNotification("ডেটা জমা হয়নি! আবার চেষ্টা করুন।", true);
-        }
-      })
-      .catch(()=>{
-        submitBtn.classList.remove('loading');
-        submitBtn.disabled = false;
-        showNotification("ডেটা জমা হয়নি! আবার চেষ্টা করুন।", true);
-      });
-    }
-
-    function showSuccessMessage(){
-      const successMessage = $('#successMessage');
-      successMessage.style.display='block';
-      setTimeout(()=>successMessage.style.display='none',3000);
-    }
-
+    // FIXED: Modified loadSubmissions function to show reply buttons for admin/editor
     function loadSubmissions() {
-      fetch(WEB_APP_URL + '?action=getSubmissions')
-        .then(res => res.json())
-        .then(data => {
-          const list = $('#submissions-list');
-          list.innerHTML = '';
+      // Show loading message
+      const list = $('#submissions-list');
+      list.innerHTML = '<div style="text-align:center;padding:40px;color:var(--text-muted)" class="bangla-font">লোড হচ্ছে...</div>';
+      
+      fetch(WEB_APP_URL + '?action=getSubmissions', {
+        method: 'GET',
+        mode: 'cors'
+      })
+        .then(res => {
+          if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+          }
+          return res.json();
+        })
+        .then(response => {
+          // Check if response is successful
+          if (!response.ok || !response.data) {
+            list.innerHTML = '<div style="text-align:center;padding:40px;color:var(--text-muted)" class="bangla-font">ডেটা লোড করা যায়নি</div>';
+            return;
+          }
           
-          const alim26Submissions = data.filter(item => 
+          // Filter only ALIM-26 batch submissions
+          const alim26Submissions = response.data.filter(item => 
             item.batch && item.batch.toString().toLowerCase().includes('alim-26')
           );
           
+          // Sort from newest to oldest
           alim26Submissions.sort((a, b) => new Date(b.timestamp || b.time) - new Date(a.timestamp || a.time));
           
           if (alim26Submissions.length === 0) {
@@ -4880,21 +5836,356 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
           }
           
+          const userRole = getUserRole();
+          const isAdminOrEditor = userRole === 'owner' || userRole === 'editor';
+          const userTokens = getTokens();
+          
+          list.innerHTML = '';
           alim26Submissions.forEach(item => {
             const div = document.createElement('div');
             div.className = 'submission-item';
-            div.innerHTML = `
-              <div class="submission-name bangla-font">${item.name}</div>
-              <div class="submission-batch bangla-font">ব্যাচ: ${item.batch}</div>
-              <div class="submission-message bangla-font">${item.message}</div>
-              ${item.reply ? `<div class="submission-reply bangla-font">উত্তর: ${item.reply}</div>` : ''}
-              <div class="submission-time bangla-font">${item.time}</div>
+            
+            // Check if this submission has a reply
+            const hasReply = item.reply && item.reply.trim() !== '';
+            const tokenStr = item.token ? item.token.toString() : '';
+            const hasToken = tokenStr && userTokens.includes(tokenStr);
+            
+            let html = `
+              <div class="submission-name bangla-font">${item.name || 'নাম নেই'}</div>
+              <div class="submission-batch bangla-font">ব্যাচ: ${item.batch || 'ব্যাচ নেই'}</div>
+              <div class="submission-message bangla-font">${item.message || 'মেসেজ নেই'}</div>
             `;
+            
+            if (hasReply) {
+              html += `<div class="reply-indicator bangla-font">উত্তর দেওয়া হয়েছে</div>`;
+              html += `<div class="submission-reply bangla-font"><strong>উত্তর:</strong> ${item.reply}</div>`;
+              html += `<div class="submission-time bangla-font">উত্তর দাতা: ${item.answeredBy || 'Admin'} | ${item.time || 'সময় নেই'}</div>`;
+            } else {
+              html += `<div class="submission-time bangla-font">${item.time || 'সময় নেই'}</div>`;
+            }
+            
+            // Add reply button for admin/editor
+            if (isAdminOrEditor && !hasReply) {
+              html += `<button class="reply-btn bangla-font" data-token="${item.token}" data-name="${item.name}" data-batch="${item.batch}" data-message="${item.message}">উত্তর দিন</button>`;
+            }
+            
+            // Add view answer button for students (if they have a reply and token matches)
+            if (hasReply && hasToken) {
+              html += `<button class="reply-btn bangla-font" onclick="showAnswerForToken('${tokenStr}')">উত্তর দেখুন</button>`;
+            }
+            
+            div.innerHTML = html;
             list.appendChild(div);
           });
+          
+          // Add event listeners to reply buttons
+          if (isAdminOrEditor) {
+            document.querySelectorAll('.reply-btn[data-token]').forEach(btn => {
+              btn.addEventListener('click', function() {
+                const token = this.getAttribute('data-token');
+                const name = this.getAttribute('data-name');
+                const batch = this.getAttribute('data-batch');
+                const message = this.getAttribute('data-message');
+                showReplyModal(token, name, batch, message);
+              });
+            });
+          }
         })
-        .catch(() => showNotification("সাবমিশন লোড হয়নি! আবার চেষ্টা করুন।", true));
+        .catch((error) => {
+          console.error('Error loading submissions:', error);
+          list.innerHTML = '<div style="text-align:center;padding:40px;color:var(--text-muted)" class="bangla-font">সাবমিশন লোড হয়নি! আবার চেষ্টা করুন।</div>';
+          showNotification("সাবমিশন লোড হয়নি! আবার চেষ্টা করুন।", true);
+        });
     }
+
+    // Function to show reply modal
+    function showReplyModal(token, name, batch, message) {
+      // Clear any existing notification
+      const notification = $('#notification');
+      notification.classList.remove('show');
+      
+      // Hide success message if visible
+      $('#successMessage').style.display = 'none';
+      
+      // Check if owner needs to set name
+      const userRole = getUserRole();
+      if (userRole === 'owner' && !localStorage.getItem(OWNER_NAME_KEY)) {
+        // Store reply data temporarily
+        window.pendingReplyData = { token, name, batch, message };
+        showOwnerNameModal();
+        return;
+      }
+      
+      // Reset reply form
+      $('#replyForm').reset();
+      
+      // Clear any existing event listeners by cloning and replacing
+      const oldForm = $('#replyForm');
+      const newForm = oldForm.cloneNode(true);
+      oldForm.parentNode.replaceChild(newForm, oldForm);
+      
+      // Set new values
+      $('#reply-token-display').textContent = token;
+      $('#reply-student-name').textContent = name;
+      $('#reply-student-batch').textContent = batch;
+      $('#reply-student-comment').textContent = message;
+      $('#reply-message').value = '';
+      
+      // Add new event listener
+      $('#replyForm').addEventListener('submit', function(e) {
+        submitReply(e);
+      });
+      
+      $('#replyModal').style.display = 'flex';
+    }
+
+    // Function to hide reply modal
+    function hideReplyModal() {
+      $('#replyModal').style.display = 'none';
+      // Reset form
+      $('#replyForm').reset();
+    }
+
+    // Function to submit reply
+    function submitReply(event) {
+      event.preventDefault();
+      const submitBtn = $('#replySubmitBtn');
+      submitBtn.classList.add('loading');
+      submitBtn.disabled = true;
+      
+      const token = $('#reply-token-display').textContent;
+      const studentName = $('#reply-student-name').textContent;
+      const studentBatch = $('#reply-student-batch').textContent;
+      const studentComment = $('#reply-student-comment').textContent;
+      const replyMessage = $('#reply-message').value.trim();
+      
+      const userRole = getUserRole();
+      let answeredBy;
+      
+      if (userRole === 'owner') {
+        const ownerName = localStorage.getItem(OWNER_NAME_KEY) || 'Admin';
+        answeredBy = 'Admin : ' + ownerName;
+      } else {
+        answeredBy = 'Editor : Sahibul Musa Sium';
+      }
+      
+      const data = {
+        action: 'submitReply',
+        token: token,
+        studentName: studentName,
+        studentBatch: studentBatch,
+        studentComment: studentComment,
+        replyMessage: replyMessage,
+        answeredBy: answeredBy
+      };
+
+      fetch(WEB_APP_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => {
+        submitBtn.classList.remove('loading');
+        submitBtn.disabled = false;
+        if (response.ok || response.type === 'opaque') {
+          hideReplyModal();
+          showNotification(`টোকেন নম্বর ${token} এর উত্তর পাঠানো হয়েছে!`, false);
+          // Reload submissions to update the UI
+          setTimeout(() => {
+            loadSubmissions();
+          }, 1000);
+        } else {
+          showNotification("উত্তর পাঠানো যায়নি! আবার চেষ্টা করুন।", true);
+        }
+      })
+      .catch((error) => {
+        console.error('Reply submission error:', error);
+        submitBtn.classList.remove('loading');
+        submitBtn.disabled = false;
+        showNotification("উত্তর পাঠানো যায়নি! আবার চেষ্টা করুন।", true);
+      });
+    }
+
+    // Function to check for replies
+    function checkForReplies() {
+      const tokens = getTokens();
+      if (tokens.length === 0) return;
+      
+      fetch(WEB_APP_URL + '?action=getSubmissions', {
+        method: 'GET',
+        mode: 'cors'
+      })
+        .then(res => {
+          if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+          }
+          return res.json();
+        })
+        .then(response => {
+          if (!response.ok || !response.data) {
+            return;
+          }
+          
+          // Filter only ALIM-26 batch submissions
+          const alim26Submissions = response.data.filter(item => 
+            item.batch && item.batch.toString().toLowerCase().includes('alim-26')
+          );
+          
+          // Find submissions that have replies and match our tokens
+          const repliedSubmissions = [];
+          
+          tokens.forEach(token => {
+            const submission = alim26Submissions.find(item => 
+              item.token && item.token.toString() === token && 
+              item.reply && item.reply.trim() !== ''
+            );
+            
+            if (submission) {
+              repliedSubmissions.push(submission);
+            }
+          });
+          
+          // Show modal for the first replied submission (most recent)
+          if (repliedSubmissions.length > 0) {
+            // Sort by timestamp descending (most recent first)
+            repliedSubmissions.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            showAnswerModal(repliedSubmissions[0]);
+          }
+        })
+        .catch(error => {
+          console.error("Error checking for replies:", error);
+        });
+    }
+
+    // Function to show answer modal
+    function showAnswerModal(item) {
+      const studentName = localStorage.getItem('userName') || 'শিক্ষার্থী';
+      $('#answer-token-info').innerHTML = `প্রিয় <span style="color: var(--primary); font-weight: 600;">${studentName}</span> আপনার কমেন্টের উত্তর দেওয়া হয়েছে!`;
+      $('#answer-token-value').textContent = item.token;
+      $('#answer-question').textContent = item.message || item.studentComment || 'কোনো প্রশ্ন নেই';
+      $('#answer-reply').textContent = item.reply || 'কোনো উত্তর নেই';
+      $('#answer-answered-by').textContent = item.answeredBy || 'Admin';
+      
+      // Set up the "বুঝেছি" button with current token
+      const understoodBtn = $('#answer-understood-btn');
+      understoodBtn.onclick = function() {
+        removeToken(item.token.toString());
+        hideAnswerModal();
+        showNotification("উত্তর সফলভাবে দেখা হয়েছে!", false);
+      };
+      
+      $('#answerModal').style.display = 'flex';
+      $('#answerModal').style.zIndex = '10006';
+    }
+
+    // Function to remove token and close modal
+    function removeTokenAndClose() {
+      const tokenValue = $('#answer-token-value').textContent;
+      if (tokenValue) {
+        removeToken(tokenValue);
+      }
+      hideAnswerModal();
+      showNotification("উত্তর সফলভাবে দেখা হয়েছে!", false);
+    }
+
+    // Function to show answer for token
+    function showAnswerForToken(token) {
+      fetch(WEB_APP_URL + '?action=getSubmissions', {
+        method: 'GET',
+        mode: 'cors'
+      })
+        .then(res => {
+          if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+          }
+          return res.json();
+        })
+        .then(response => {
+          if (!response.ok || !response.data) {
+            showNotification("উত্তর লোড করা যায়নি", true);
+            return;
+          }
+          
+          const submission = response.data.find(item => 
+            item.token && item.token.toString() === token
+          );
+          
+          if (submission && submission.reply && submission.reply.trim() !== '') {
+            showAnswerModal(submission);
+          } else {
+            showNotification("এই টোকেনের জন্য কোন উত্তর নেই", true);
+          }
+        })
+        .catch(error => {
+          console.error("Error checking for replies:", error);
+          showNotification("উত্তর চেক করা যায়নি", true);
+        });
+    }
+
+    // Function to hide answer modal
+    function hideAnswerModal() {
+      $('#answerModal').style.display = 'none';
+    }
+
+    // Owner Name Modal Functions
+    function showOwnerNameModal() {
+      // Hide any success message
+      $('#successMessage').style.display = 'none';
+      // Clear any existing notification
+      const notification = $('#notification');
+      notification.classList.remove('show');
+      
+      $('#ownerNameModal').style.display = 'flex';
+    }
+
+    function hideOwnerNameModal() {
+      $('#ownerNameModal').style.display = 'none';
+    }
+
+    function saveOwnerName(event) {
+      event.preventDefault();
+      const ownerName = $('#ownerName').value.trim();
+      if (ownerName) {
+        localStorage.setItem(OWNER_NAME_KEY, ownerName);
+        hideOwnerNameModal();
+        showNotification('নাম সফলভাবে সংরক্ষিত হয়েছে!', false);
+        
+        // After saving, open the reply modal (if there is pending reply data)
+        if (window.pendingReplyData) {
+          const { token, name, batch, message } = window.pendingReplyData;
+          showReplyModal(token, name, batch, message);
+          window.pendingReplyData = null;
+        }
+      } else {
+        showNotification("নাম লিখুন!", true);
+      }
+    }
+
+    // Event listeners যোগ করুন
+    document.addEventListener('DOMContentLoaded', () => {
+      // Check for replies when page loads
+      setTimeout(() => {
+        if (checkLoginExpiry()) {
+          checkForReplies();
+        }
+      }, 2000);
+      
+      // Modal close event listeners
+      window.addEventListener('click', (e) => { 
+        if (e.target == $('#replyModal')) {
+          hideReplyModal();
+        }
+        if (e.target == $('#answerModal')) {
+          hideAnswerModal();
+        }
+        if (e.target == $('#ownerNameModal')) {
+          hideOwnerNameModal();
+        }
+      });
+    });
 
     $('#form-button').addEventListener('click', handleFormClick);
     $('#submissions-button').addEventListener('click',showSubmissions);
@@ -4931,22 +6222,6 @@ document.addEventListener('DOMContentLoaded', function() {
           const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
           examCountdown.textContent = `বোর্ড পরীক্ষা শুরু: ${months} মাস ${days} দিন পর*`;
         }
-      }
-    }
-
-    function setButtonVisibility() {
-      const role = getUserRole();
-      const formButton = $('#form-button');
-      const submissionsButton = $('#submissions-button');
-      
-      formButton.style.display = 'none';
-      submissionsButton.style.display = 'none';
-      
-      if (role === 'user' || role === 'editor') {
-        formButton.style.display = 'inline-flex';
-      } 
-      if (role === 'owner' || role === 'editor') {
-        submissionsButton.style.display = 'inline-flex';
       }
     }
 
